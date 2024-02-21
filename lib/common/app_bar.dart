@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Appbar which Contains the search icon as the leading and list icon as the trailing/actions
 AppBar appBar() {
   return AppBar(
     leading: IconButton.filled(
