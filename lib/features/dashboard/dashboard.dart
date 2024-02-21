@@ -19,9 +19,9 @@ class Dashboard extends StatelessWidget {
               Text(
                 "Current Location",
                 style: TextStyle(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
-                    fontFamily: 'Roboto'),
+                  fontWeight: FontWeight.w400,
+                  fontSize: 14,
+                ),
               )
             ],
           ),
@@ -32,9 +32,9 @@ class Dashboard extends StatelessWidget {
               Text(
                 "Bhopal, Madhya Pradesh",
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    fontFamily: 'Roboto'),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                ),
               )
             ],
           ),
@@ -47,7 +47,6 @@ class Dashboard extends StatelessWidget {
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 18,
-                  fontFamily: 'Roboto',
                   fontWeight: FontWeight.w300,
                 ),
               )
@@ -69,17 +68,13 @@ class Dashboard extends StatelessWidget {
                     Gap(10),
                     Text(
                       "32°C",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                     ),
                     Text(
                       "Partly Cloudy",
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w400),
+                      style:
+                          TextStyle(fontSize: 30, fontWeight: FontWeight.w400),
                     )
                   ],
                 ),

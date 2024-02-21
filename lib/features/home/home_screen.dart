@@ -1,3 +1,4 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -17,14 +18,18 @@ class HomeScreen extends StatelessWidget {
         appBar: appBar(),
         bottomNavigationBar: navBar(),
         // Using Consumer just here coz don't wanna rebuild the whole screen
-        body: Consumer(
-          builder: (context, ref, child) {
-            return [
-              const Dashboard(),
-              const ForecastScreen(),
-              const MapScreen(),
-              const SettingsScreen()
-            ][ref.watch(bottomNavigationBarProvider)];
+        body: DynamicColorBuilder(
+          builder: (lightDynamic, darkDynamic) {
+            return Consumer(
+              builder: (context, ref, child) {
+                return [
+                  const Dashboard(),
+                  const ForecastScreen(),
+                  const MapScreen(),
+                  const SettingsScreen()
+                ][ref.watch(bottomNavigationBarProvider)];
+              },
+            );
           },
         ));
   }

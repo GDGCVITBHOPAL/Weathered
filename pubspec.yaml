@@ -7,11 +7,12 @@ environment:
   sdk: '>=3.2.4 <4.0.0'
 
 dependencies:
+  dynamic_color: ^1.6.9
   flutter:
     sdk: flutter
   flutter_riverpod: ^2.4.10
   gap: ^3.0.1
-  google_fonts: ^6.1.0
+  material_color_utilities: ^0.8.0
 
 dev_dependencies:
   flutter_test:
@@ -22,3 +23,15 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets: 
+    - assets/fonts/
+# Fonts have been taken from fonts.google.com
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
