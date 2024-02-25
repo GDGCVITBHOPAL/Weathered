@@ -4,7 +4,17 @@ class AppStyle {
   static TextTheme get _textTheme => ThemeData().textTheme;
   static TextTheme textTheme = _textTheme.copyWith(
     titleLarge: const TextStyle(
+      fontSize: 32,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.bold,
+    ),
+    titleMedium: const TextStyle(
       fontSize: 28,
+      fontFamily: 'Poppins',
+      fontWeight: FontWeight.bold,
+    ),
+    titleSmall: const TextStyle(
+      fontSize: 24,
       fontFamily: 'Poppins',
       fontWeight: FontWeight.bold,
     ),

@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:weathered/common/common.dart';
@@ -61,6 +59,8 @@ class Dashboard extends StatelessWidget {
             children: [
               MatContainer.primary(
                 context: context,
+                topPad: 24,
+                bottomPad: 32,
                 child: Column(
                   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -97,8 +97,6 @@ class Dashboard extends StatelessWidget {
               MatContainer.primary(
                 context: context,
                 height: 150,
-                topPad: 16,
-                bottomPad: 16,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [

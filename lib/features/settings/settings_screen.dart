@@ -19,7 +19,7 @@ class SettingsScreen extends StatelessWidget {
             style: AppStyle.textTheme.titleLarge,
           ),
         ),
-        Gap(10),
+        Gap(8),
 
         //For Dark Mode
         // The Slider is left
