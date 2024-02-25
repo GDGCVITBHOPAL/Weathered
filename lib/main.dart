@@ -21,25 +21,29 @@ class MainApp extends StatelessWidget {
           // setting the color scheme
           lightColorScheme = lightDynamic.harmonized();
           darkColorScheme = darkDynamic.harmonized();
-          //
         } else {
           // if the dynamic color is null
           lightColorScheme = ColorScheme.fromSeed(seedColor: Colors.blueAccent);
           darkColorScheme = ColorScheme.fromSeed(seedColor: Colors.blueAccent);
         }
         return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: const HomeScreen(),
-            theme: ThemeData(
-              fontFamily: 'Poppins',
-              colorScheme: lightColorScheme,
-              useMaterial3: true,
+          debugShowCheckedModeBanner: false,
+          home: const HomeScreen(),
+          theme: ThemeData(
+            fontFamily: 'Poppins',
+            colorScheme: lightColorScheme.copyWith(
+
             ),
-            darkTheme: ThemeData(
-              fontFamily: 'Poppins',
-              colorScheme: darkColorScheme,
-              useMaterial3: true,
-            ));
+            useMaterial3: true,
+          ),
+          darkTheme: ThemeData(
+            fontFamily: 'Poppins',
+            colorScheme: darkColorScheme.copyWith(
+              
+            ),
+            useMaterial3: true,
+          ),
+        );
       },
     );
   }
