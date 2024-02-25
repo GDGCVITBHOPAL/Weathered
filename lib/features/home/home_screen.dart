@@ -14,25 +14,23 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        
-          bottomNavigationBar: navBar(),
-          // Using Consumer just here coz don't wanna rebuild the whole screen
-          body: DynamicColorBuilder(
-            builder: (lightDynamic, darkDynamic) {
-              return Consumer(
-                builder: (context, ref, child) {
-                  return [
-                    const Dashboard(),
-                    const ForecastScreen(),
-                    const MapScreen(),
-                    const SettingsScreen()
-                  ][ref.watch(bottomNavigationBarProvider)];
-                },
-              );
-            },
-          )),
-    );
+    return Scaffold(
+        appBar: appBar(context),
+        bottomNavigationBar: navBar(),
+        // Using Consumer just here coz don't wanna rebuild the whole screen
+        body: DynamicColorBuilder(
+          builder: (lightDynamic, darkDynamic) {
+            return Consumer(
+              builder: (context, ref, child) {
+                return [
+                  const Dashboard(),
+                  const ForecastScreen(),
+                  const MapScreen(),
+                  const SettingsScreen()
+                ][ref.watch(bottomNavigationBarProvider)];
+              },
+            );
+          },
+        ));
   }
 }
