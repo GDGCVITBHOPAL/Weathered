@@ -13,6 +13,7 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
         body: Column(
       children: [
+        const Gap(16),
         Center(
           child: Text(
             'Settings',
@@ -26,7 +27,7 @@ class SettingsScreen extends StatelessWidget {
         Container(
           margin: EdgeInsets.fromLTRB(16, 16, 16, 5),
           decoration: BoxDecoration(
-              color: Color(0x3897ABFF),
+              color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.circular(15.0)),
           padding: EdgeInsets.all(16.0),
           child: Row(
@@ -53,7 +54,7 @@ class SettingsScreen extends StatelessWidget {
         Container(
           margin: EdgeInsets.fromLTRB(16, 16, 16, 5),
           decoration: BoxDecoration(
-              color: Color(0x3897ABFF),
+              color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.circular(15.0)),
           padding: EdgeInsets.all(16.0),
           child: Row(
@@ -69,7 +70,7 @@ class SettingsScreen extends StatelessWidget {
         Container(
           margin: EdgeInsets.fromLTRB(16, 16, 16, 5),
           decoration: BoxDecoration(
-              color: Color(0x3897ABFF),
+              color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.circular(15.0)),
           padding: EdgeInsets.all(16.0),
           child: Row(

@@ -12,6 +12,16 @@ class Dashboard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
+          const Gap(16),
+          const SearchBar(
+            padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(
+              EdgeInsets.symmetric(horizontal: 16),
+            ),
+            hintText: "Search for a city",
+            elevation: MaterialStatePropertyAll(1),
+            leading: Icon(Icons.search_rounded),
+          ),
+          const Gap(16),
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -138,7 +148,8 @@ class Dashboard extends StatelessWidget {
                     )
                   ],
                 ),
-              )
+              ),
+              const Gap(8),
             ],
           ),
         ],

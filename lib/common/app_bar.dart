@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// TODO: Replace the current appbar with just a search bar
+
 // Appbar which Contains the search icon as the leading and list icon as the trailing/actions
 AppBar appBar() {
   return AppBar(
