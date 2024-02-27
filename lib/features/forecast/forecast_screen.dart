@@ -12,7 +12,7 @@ class ForecastScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          const Gap(16),
+          const Gap(8),
           Center(
             child: Text(
               'Forecast',

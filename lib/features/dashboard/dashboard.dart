@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:weathered/common/common.dart';
+import 'package:weathered/features/dashboard/WeatherAttribute.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -12,16 +13,16 @@ class Dashboard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
-          const Gap(16),
-          const SearchBar(
-            padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(
-              EdgeInsets.symmetric(horizontal: 16),
-            ),
-            hintText: "Search for a city",
-            elevation: MaterialStatePropertyAll(1),
-            leading: Icon(Icons.search_rounded),
-          ),
-          const Gap(16),
+          // const Gap(16),
+          // const SearchBar(
+          //   padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(
+          //     EdgeInsets.symmetric(horizontal: 16),
+          //   ),
+          //   hintText: "Search for a city",
+          //   elevation: MaterialStatePropertyAll(1),
+          //   leading: Icon(Icons.search_rounded),
+          // ),
+          const Gap(8),
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -156,30 +157,4 @@ class Dashboard extends StatelessWidget {
       ),
     );
   }
-}
-
-Row weatherAttribute(
-  BuildContext context, {
-  required IconData icon,
-  required String attribute,
-  required String value,
-}) {
-  final fontColor = Theme.of(context).colorScheme.onPrimaryContainer;
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      Icon(icon, color: fontColor),
-      const Gap(10),
-      Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(attribute,
-              style: TextStyle(color: fontColor, fontWeight: FontWeight.w700)),
-          Text(value, style: TextStyle(color: fontColor)),
-        ],
-      )
-    ],
-  );
 }

@@ -13,7 +13,7 @@ class SettingsScreen extends StatelessWidget {
     return Scaffold(
         body: Column(
       children: [
-        const Gap(16),
+        // const Gap(16),
         Center(
           child: Text(
             'Settings',
