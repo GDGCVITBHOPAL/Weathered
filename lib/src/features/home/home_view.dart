@@ -1,16 +1,16 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:weathered/src/features/settings/settings_view.dart';
 
-import '../../common/common.dart';
+import '../../core/components/common.dart';
 
-import '../dashboard/dashboard.dart';
-import '../forecast/forecast_screen.dart';
-import '../map/map_screen.dart';
-import '../settings/settings_screen.dart';
+import '../dashboard/dashboard_view.dart';
+import '../forecast/forecast_view.dart';
+import '../map/map_view.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +24,9 @@ class HomeScreen extends StatelessWidget {
               builder: (context, ref, child) {
                 return [
                   const Dashboard(),
-                  const ForecastScreen(),
-                  const MapScreen(),
-                  const SettingsScreen()
+                  const ForecastView(),
+                  const MapView(),
+                  const SettingsView(),
                 ][ref.watch(bottomNavigationBarProvider)];
               },
             );

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:weathered/common/common.dart';
-import 'package:weathered/constants/style.dart';
 
-class ForecastScreen extends StatelessWidget {
-  const ForecastScreen({super.key});
+import '../../core/components/common.dart';
+import '../../core/utils/style.dart';
+
+class ForecastView extends StatelessWidget {
+  const ForecastView({super.key});
 
   @override
   Widget build(BuildContext context) {

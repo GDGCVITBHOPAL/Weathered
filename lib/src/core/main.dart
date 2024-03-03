@@ -2,7 +2,8 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'features/home/home_screen.dart';
+import '../features/home/home_view.dart';
+
 
 void main() {
   runApp(const ProviderScope(child: MainApp()));
@@ -28,11 +29,10 @@ class MainApp extends StatelessWidget {
         }
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: const HomeScreen(),
+          home: const HomeView(),
           theme: ThemeData(
             fontFamily: 'Poppins',
             colorScheme: lightColorScheme.copyWith(
-
             ),
             useMaterial3: true,
           ),

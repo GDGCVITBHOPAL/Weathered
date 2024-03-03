@@ -2,11 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:weathered/constants/style.dart';
-import 'package:weathered/features/settings/switch.dart';
 
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
+import '../../core/utils/style.dart';
+import 'settings_model.dart';
+
+class SettingsView extends StatelessWidget {
+  const SettingsView({super.key});
 
   @override
   Widget build(BuildContext context) {

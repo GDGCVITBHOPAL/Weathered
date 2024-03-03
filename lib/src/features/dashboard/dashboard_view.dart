@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:weathered/common/common.dart';
-import 'package:weathered/features/dashboard/WeatherAttribute.dart';
+
+import '../../core/components/common.dart';
+import 'dashboard_model.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});
@@ -13,15 +14,6 @@ class Dashboard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
-          // const Gap(16),
-          // const SearchBar(
-          //   padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(
-          //     EdgeInsets.symmetric(horizontal: 16),
-          //   ),
-          //   hintText: "Search for a city",
-          //   elevation: MaterialStatePropertyAll(1),
-          //   leading: Icon(Icons.search_rounded),
-          // ),
           const Gap(8),
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
