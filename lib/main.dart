@@ -2,8 +2,7 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../features/home/view/home_view.dart';
-
+import 'src/features/home/view/home_view.dart';
 
 void main() {
   runApp(const ProviderScope(child: MainApp()));
@@ -32,15 +31,12 @@ class MainApp extends StatelessWidget {
           home: const HomeView(),
           theme: ThemeData(
             fontFamily: 'Poppins',
-            colorScheme: lightColorScheme.copyWith(
-            ),
+            colorScheme: lightColorScheme.copyWith(),
             useMaterial3: true,
           ),
           darkTheme: ThemeData(
             fontFamily: 'Poppins',
-            colorScheme: darkColorScheme.copyWith(
-              
-            ),
+            colorScheme: darkColorScheme.copyWith(),
             useMaterial3: true,
           ),
         );
