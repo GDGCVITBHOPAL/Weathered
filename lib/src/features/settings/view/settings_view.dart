@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-import '../../core/utils/style.dart';
-import 'settings_model.dart';
+import '../../../core/utils/style.dart';
+import '../model/settings_model.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});

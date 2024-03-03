@@ -1,13 +1,13 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weathered/src/features/settings/settings_view.dart';
+import 'package:weathered/src/features/settings/view/settings_view.dart';
 
-import '../../core/components/common.dart';
+import '../../../core/components/common.dart';
 
-import '../dashboard/dashboard_view.dart';
-import '../forecast/forecast_view.dart';
-import '../map/map_view.dart';
+import '../../dashboard/view/dashboard_view.dart';
+import '../../forecast/view/forecast_view.dart';
+import '../../map/view/map_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

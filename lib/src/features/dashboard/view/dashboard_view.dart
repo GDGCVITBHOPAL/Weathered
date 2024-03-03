@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
-import '../../core/components/common.dart';
-import 'dashboard_model.dart';
+import '../../../core/components/common.dart';
+import '../model/dashboard_model.dart';
 
 class Dashboard extends StatelessWidget {
   const Dashboard({super.key});

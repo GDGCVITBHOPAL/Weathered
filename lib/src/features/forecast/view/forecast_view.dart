@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 
-import '../../core/components/common.dart';
-import '../../core/utils/style.dart';
+import '../../../core/components/common.dart';
+import '../../../core/utils/style.dart';
 
 class ForecastView extends StatelessWidget {
   const ForecastView({super.key});
