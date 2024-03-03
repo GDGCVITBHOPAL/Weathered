@@ -7,13 +7,38 @@ environment:
   sdk: '>=3.2.4 <4.0.0'
 
 dependencies:
+  dynamic_color: ^1.6.9
   flutter:
     sdk: flutter
+  flutter_riverpod: ^2.4.10
+  flutter_svg: ^2.0.10+1
+  gap: ^3.0.1
+  geocoding: ^2.1.1
+  geolocator: ^11.0.0
+  google_maps_flutter: ^2.2.8
+  http: ^1.2.0
+  intl: ^0.19.0
+  material_color_utilities: ^0.8.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  riverpod_lint: ^2.3.9
+  build_runner: ^2.4.8
 
 flutter:
   uses-material-design: true
+  assets: 
+    - assets/fonts/
+    - assets/icons/weather/
+# Fonts have been taken from fonts.google.com
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600

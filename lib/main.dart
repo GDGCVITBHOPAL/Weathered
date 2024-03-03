@@ -1,7 +1,11 @@
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'src/features/home/view/home_view.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends StatelessWidget {
@@ -9,12 +13,34 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return DynamicColorBuilder(
+      builder: (lightDynamic, darkDynamic) {
+        ColorScheme lightColorScheme;
+        ColorScheme darkColorScheme;
+        if (lightDynamic != null && darkDynamic != null) {
+          // setting the color scheme
+          lightColorScheme = lightDynamic.harmonized();
+          darkColorScheme = darkDynamic.harmonized();
+        } else {
+          // if the dynamic color is null
+          lightColorScheme = ColorScheme.fromSeed(seedColor: Colors.blueAccent);
+          darkColorScheme = ColorScheme.fromSeed(seedColor: Colors.blueAccent);
+        }
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: const HomeView(),
+          theme: ThemeData(
+            fontFamily: 'Poppins',
+            colorScheme: lightColorScheme.copyWith(),
+            useMaterial3: true,
+          ),
+          darkTheme: ThemeData(
+            fontFamily: 'Poppins',
+            colorScheme: darkColorScheme.copyWith(),
+            useMaterial3: true,
+          ),
+        );
+      },
     );
   }
 }
