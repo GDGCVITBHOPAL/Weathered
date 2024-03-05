@@ -1,7 +1,7 @@
 import 'dart:async';
-import 'package:weathered/src/features/map/model/forecast_tile_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:weathered/src/features/map/service/forecast_tile_provider.dart';
 
 class MapView extends StatefulWidget {
   const MapView({super.key});
