@@ -1,16 +1,23 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:weathered/src/features/map/service/forecast_tile_provider.dart';
+
+import '../../home/view/home_view.dart';
+import '../service/forecast_tile_provider.dart';
 
 class MapView extends StatefulWidget {
   const MapView({super.key});
-
   @override
   State<MapView> createState() => MapSampleState();
 }
 
 class MapSampleState extends State<MapView> {
+  @override
+  void initState() {
+    super.initState();
+    requestLocationPermission();
+  }
+
   final Completer<GoogleMapController> _controller =
       Completer<GoogleMapController>();
 
@@ -38,6 +45,8 @@ class MapSampleState extends State<MapView> {
     return Scaffold(
       body: GoogleMap(
         mapType: MapType.normal,
+        myLocationEnabled: true,
+        myLocationButtonEnabled: true,
         initialCameraPosition: _initialPos,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);

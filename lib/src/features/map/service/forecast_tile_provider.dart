@@ -1,7 +1,9 @@
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:weathered/src/api/api_key.dart';
-// TODO : The map overlay is slow
+
+import '../../../api/api_key.dart';
+
+// TODO: The map overlay is slow
 
 class ForecastTileProvider implements TileProvider {
   @override
@@ -9,7 +11,7 @@ class ForecastTileProvider implements TileProvider {
     Uint8List tileBytes = Uint8List(0);
     try {
       final url =
-          "https://tile.openweathermap.org/map/temp_new/$zoom/$x/$y.png?appid=$api_key";
+          "https://tile.openweathermap.org/map/temp_new/$zoom/$x/$y.png?appid=$apiKey";
       final uri = Uri.parse(url);
       final imageData = await NetworkAssetBundle(uri).load("");
       tileBytes = imageData.buffer.asUint8List();

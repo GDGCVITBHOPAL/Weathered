@@ -1,16 +1,27 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weathered/src/features/settings/view/settings_view.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 import '../../../core/components/common.dart';
-
 import '../../dashboard/view/dashboard_view.dart';
 import '../../forecast/view/forecast_view.dart';
 import '../../map/view/map_view.dart';
+import '../../settings/view/settings_view.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
+
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  @override
+  void initState() {
+    super.initState();
+    requestLocationPermission();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,5 +43,12 @@ class HomeView extends StatelessWidget {
             );
           },
         ));
+  }
+}
+
+void requestLocationPermission() async {
+  final status = await Permission.locationWhenInUse.status;
+  if (!status.isGranted) {
+    Permission.locationWhenInUse.request();
   }
 }
