@@ -1,7 +1,7 @@
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:permission_handler/permission_handler.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../../../core/components/common.dart';
 import '../../dashboard/view/dashboard_view.dart';
@@ -47,8 +47,15 @@ class _HomeViewState extends State<HomeView> {
 }
 
 void requestLocationPermission() async {
-  final status = await Permission.locationWhenInUse.status;
-  if (!status.isGranted) {
-    Permission.locationWhenInUse.request();
+  LocationPermission permission;
+  await Geolocator.isLocationServiceEnabled();
+  permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.denied) {
+    permission = await Geolocator.requestPermission();
+    if (permission == LocationPermission.denied) {
+      const Dialog(
+        child: Text('Location permission is required to use this app'),
+      );
+    }
   }
 }

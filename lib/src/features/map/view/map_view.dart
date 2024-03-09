@@ -46,6 +46,7 @@ class MapSampleState extends State<MapView> {
       body: GoogleMap(
         mapType: MapType.normal,
         myLocationEnabled: true,
+        compassEnabled: true,
         myLocationButtonEnabled: true,
         initialCameraPosition: _initialPos,
         onMapCreated: (GoogleMapController controller) {
