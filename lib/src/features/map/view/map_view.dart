@@ -5,7 +5,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../home/view/home_view.dart';
 import '../service/forecast_tile_provider.dart';
-import '../service/location_provider.dart';
+import '../provider/location_provider.dart';
 
 class MapView extends ConsumerStatefulWidget {
   const MapView({super.key});
@@ -41,41 +41,41 @@ class MapViewState extends ConsumerState<MapView> {
 
   @override
   Widget build(BuildContext context) {
-      final position = ref.watch(locationProvider.future);
-      return Scaffold(
-        body: FutureBuilder(
-          future: position,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (snapshot.hasError) {
-              return Center(
-                child: Text(
-                  'Error : ${snapshot.error}',
-                  textAlign: TextAlign.center,
-                ),
-              );
-            } else {
-              return GoogleMap(
-                mapType: MapType.normal,
-                myLocationEnabled: true,
-                compassEnabled: true,
-                myLocationButtonEnabled: true,
-                initialCameraPosition: CameraPosition(
-                    target:
-                        LatLng(snapshot.data!.latitude, snapshot.data!.longitude),
-                    zoom: 5.0),
-                onMapCreated: (GoogleMapController controller) {
-                  _controller.complete(controller);
-                  _initTiles();
-                },
-                tileOverlays: _tileOverlays,
-              );
-            }
-          },
-        ),
-      );
+    final position = ref.watch(locationProvider.future);
+    return Scaffold(
+      body: FutureBuilder(
+        future: position,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          } else if (snapshot.hasError) {
+            return Center(
+              child: Text(
+                'Error : ${snapshot.error}',
+                textAlign: TextAlign.center,
+              ),
+            );
+          } else {
+            return GoogleMap(
+              mapType: MapType.normal,
+              myLocationEnabled: true,
+              compassEnabled: true,
+              myLocationButtonEnabled: true,
+              initialCameraPosition: CameraPosition(
+                  target:
+                      LatLng(snapshot.data!.latitude, snapshot.data!.longitude),
+                  zoom: 5.0),
+              onMapCreated: (GoogleMapController controller) {
+                _controller.complete(controller);
+                _initTiles();
+              },
+              tileOverlays: _tileOverlays,
+            );
+          }
+        },
+      ),
+    );
   }
 }
