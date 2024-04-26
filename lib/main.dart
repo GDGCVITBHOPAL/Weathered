@@ -1,15 +1,8 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:weathered/src/features/dashboard/services/api_call.dart';
 import 'src/features/home/view/home_view.dart';
 
-final fetchCurrentWeatherProvider = FutureProvider((ref) {
-  final CurrentWeatherRepository = ref.watch(CurrentWeatherRepositoryProvider);
-  return CurrentWeatherRepository.fetchWeatherData();
-});
 
 void main() {
   runApp(const ProviderScope(child: MainApp()));
