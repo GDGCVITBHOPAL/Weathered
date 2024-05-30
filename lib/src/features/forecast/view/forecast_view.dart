@@ -79,6 +79,7 @@ class ForecastView extends StatelessWidget {
 
 // Demo Data
 // TODO: Replace Fake Data with API Data
+
 List<List<String>> forecastData = [
   ["Nov 17", "Partly Cloudy", "35°C", "37°C"],
   ["Nov 18", "Partly Cloudy", "35°C", "37°C"],
