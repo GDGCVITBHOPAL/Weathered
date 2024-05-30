@@ -1,16 +1,16 @@
-// ignore_for_file: non_constant_identifier_names
 import 'dart:convert';
 
 // using website generated
 // To parse this JSON data, do
 //
 //     final currentWeather = currentWeatherFromJson(jsonString);
-CurrentWeather currentWeatherFromJson(String str) =>
-    CurrentWeather.fromJson(json.decode(str));
+CurrentWeatherModel currentWeatherFromJson(String str) =>
+    CurrentWeatherModel.fromJson(json.decode(str));
 
-String currentWeatherToJson(CurrentWeather data) => json.encode(data.toJson());
+String currentWeatherToJson(CurrentWeatherModel data) =>
+    json.encode(data.toJson());
 
-class CurrentWeather {
+class CurrentWeatherModel {
   final Coord coord;
   final List<Weather> weather;
   final String base;
@@ -22,10 +22,10 @@ class CurrentWeather {
   final Sys sys;
   final int timezone;
   final int id;
-  final String name;
+  final String? name;
   final int cod;
 
-  CurrentWeather({
+  CurrentWeatherModel({
     required this.coord,
     required this.weather,
     required this.base,
@@ -41,7 +41,8 @@ class CurrentWeather {
     required this.cod,
   });
 
-  factory CurrentWeather.fromJson(Map<String, dynamic> json) => CurrentWeather(
+  factory CurrentWeatherModel.fromJson(Map<String, dynamic> json) =>
+      CurrentWeatherModel(
         coord: Coord.fromJson(json["coord"]),
         weather:
             List<Weather>.from(json["weather"].map((x) => Weather.fromJson(x))),
@@ -148,7 +149,7 @@ class Main {
 }
 
 class Sys {
-  final String country;
+  final String? country;
   final int sunrise;
   final int sunset;
 

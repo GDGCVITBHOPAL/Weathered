@@ -34,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
             return Consumer(
               builder: (context, ref, child) {
                 return [
-                  const Dashboard(),
+                  const DashBoard(),
                   const ForecastView(),
                   const MapView(),
                   const SettingsView(),

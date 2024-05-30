@@ -2,18 +2,19 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:weathered/src/features/dashboard/data/weather_repository.dart';
 
 import '../../home/view/home_view.dart';
 import '../service/forecast_tile_provider.dart';
 import '../provider/location_provider.dart';
 
-class MapView extends ConsumerStatefulWidget {
+class MapView extends StatefulWidget {
   const MapView({super.key});
   @override
-  ConsumerState<MapView> createState() => MapViewState();
+  State<MapView> createState() => MapViewState();
 }
 
-class MapViewState extends ConsumerState<MapView> {
+class MapViewState extends State<MapView> {
   @override
   void initState() {
     super.initState();
@@ -41,41 +42,37 @@ class MapViewState extends ConsumerState<MapView> {
 
   @override
   Widget build(BuildContext context) {
-    final position = ref.watch(locationProvider.future);
-    return Scaffold(
-      body: FutureBuilder(
-        future: position,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (snapshot.hasError) {
-            return Center(
-              child: Text(
-                'Error : ${snapshot.error}',
-                textAlign: TextAlign.center,
-              ),
-            );
-          } else {
-            return GoogleMap(
-              mapType: MapType.normal,
-              myLocationEnabled: true,
-              compassEnabled: true,
-              myLocationButtonEnabled: true,
-              initialCameraPosition: CameraPosition(
-                  target:
-                      LatLng(snapshot.data!.latitude, snapshot.data!.longitude),
-                  zoom: 5.0),
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-                _initTiles();
-              },
-              tileOverlays: _tileOverlays,
-            );
-          }
-        },
-      ),
-    );
+    return Scaffold(body: Consumer(
+      builder: (context, ref, child) {
+        final position = ref.watch(locationProvider);
+        if (position is AsyncLoading) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        } else if (position is AsyncError) {
+          logger.e(position);
+          return Text(
+            'Error : $position',
+            textAlign: TextAlign.center,
+          );
+        } else {
+          logger.e(position);
+          return GoogleMap(
+            mapType: MapType.normal,
+            myLocationEnabled: true,
+            compassEnabled: true,
+            myLocationButtonEnabled: true,
+            initialCameraPosition: CameraPosition(
+                target: LatLng(position.latitude, position.longitude),
+                zoom: 5.0),
+            onMapCreated: (GoogleMapController controller) {
+              _controller.complete(controller);
+              _initTiles();
+            },
+            tileOverlays: _tileOverlays,
+          );
+        }
+      },
+    ));
   }
 }
