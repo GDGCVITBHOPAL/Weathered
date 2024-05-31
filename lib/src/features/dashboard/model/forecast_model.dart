@@ -33,7 +33,6 @@ class ForecastModel {
         clouds: Clouds.fromJson(json["clouds"]),
         wind: Wind.fromJson(json["wind"]),
         visibility: json["visibility"],
-        datetime: DateTime.parse(json["dt_txt"]) ,
+        datetime: DateTime.parse(json["dt_txt"]),
       );
-  
 }

@@ -4,8 +4,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:weathered/src/features/dashboard/data/weather_repository.dart';
 
 final fakeP = Position(
-  longitude: 123.456,
-  latitude: 78.910,
+  longitude: 77.412613,
+  latitude: 23.259933,
   timestamp: DateTime.now(),
   accuracy: 10.0,
   altitude: 100.0,

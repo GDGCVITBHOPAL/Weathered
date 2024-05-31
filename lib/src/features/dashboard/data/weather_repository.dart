@@ -38,7 +38,7 @@ class WeatherDataRepository {
 
   Future<ForecastModel> getForecastData() async {
     String url =
-        "api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=$apiKey";
+        "http://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&units=metric&appid=$apiKey";
     return http.get(Uri.parse(url)).then((http.Response response) {
       logger.i(response);
       if (response.statusCode == 200) {

@@ -94,7 +94,7 @@ class DashBoardState extends ConsumerState<DashBoard> {
                             ],
                           ),
                           Text(
-                            "${data.main.temp} °C",
+                            "${data.main.temp.toStringAsFixed(0)} °C",
                             style: TextStyle(
                               fontSize: 36,
                               fontWeight: FontWeight.bold,
