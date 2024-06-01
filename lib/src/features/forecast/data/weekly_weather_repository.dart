@@ -17,7 +17,7 @@ class WeeklyWeatherDataRepository {
   // get currentWeather Data
   Future<WeeklyWeather> getWeeklyWeatherData() async {
     String url =
-        "http://api.openweathermap.org/data/2.5/forecast?lat=25.612241&lon=85.066646&appid=b811e375e46ccd83825fb9cb2d9813da&units=metric&cnt=40";
+        "http://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=b811e375e46ccd83825fb9cb2d9813da&units=metric&cnt=40";
 
     return http.get(Uri.parse(url)).then((http.Response response) {
       logger.i(response.body);

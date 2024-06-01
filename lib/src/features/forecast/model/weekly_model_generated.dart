@@ -47,8 +47,8 @@ class WeatherList {
   final List<Weather> weather;
   final Clouds clouds;
   final Wind wind;
-  final int visibility;
-  final int pop;
+  final num visibility;
+  final num pop;
   final Sys sys;
   final String dtTxt;
 
@@ -111,10 +111,10 @@ class Main {
   final double feelsLike;
   final double tempMin;
   final double tempMax;
-  final int pressure;
-  final int seaLevel;
-  final int grndLevel;
-  final int humidity;
+  final num pressure;
+  final num seaLevel;
+  final num grndLevel;
+  final num humidity;
   final double tempKf;
 
   Main({
@@ -199,9 +199,9 @@ class Weather {
 }
 
 class Wind {
-  final double speed;
-  final int deg;
-  final double gust;
+  final num speed;
+  final num deg;
+  final num gust;
 
   Wind({
     required this.speed,
@@ -227,7 +227,7 @@ class City {
   final String name;
   final Coord coord;
   final String country;
-  final int population;
+  final num population;
   final int timezone;
   final int sunrise;
   final int sunset;
