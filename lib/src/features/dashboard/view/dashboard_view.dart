@@ -10,7 +10,6 @@ import 'package:weathered/src/utils/style.dart';
 import '../../../core/components/common.dart';
 import '../components/weather_attribute.dart';
 import '../data/api_call.dart';
-import '../data/weather_repository.dart';
 
 class DashBoard extends ConsumerStatefulWidget {
   const DashBoard({super.key});
@@ -22,6 +21,150 @@ class DashBoard extends ConsumerStatefulWidget {
 var logger1 = Logger();
 
 class DashBoardState extends ConsumerState<DashBoard> {
+  //for overlay of the more info on weather
+  void _showMoreDetails(BuildContext context, dynamic weatherData) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(
+            "More Details",
+            style: AppStyle.textTheme.titleSmall,
+          ),
+          content: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: weatherAttributeBox(
+                          context,
+                          icon: Icons.water_drop_rounded,
+                          attribute: "Humidity",
+                          value: weatherData['Humidity'],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                        child: weatherAttributeBox(
+                          context,
+                          icon: Icons.brightness_high_sharp,
+                          attribute: "UV Index",
+                          value: weatherData['UVIndex'],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                        child: weatherAttributeBox(
+                          context,
+                          icon: Icons.sunny,
+                          attribute: "Sunrise",
+                          value: weatherData['Sunrise'],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                        child: weatherAttributeBox(
+                          context,
+                          icon: Icons.cloud,
+                          attribute: "Cloud %",
+                          value: weatherData['Cloud %'],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                        child: weatherAttributeBox(
+                          context,
+                          icon: Icons.tire_repair_rounded,
+                          attribute: "Pressure",
+                          value: weatherData['Pressure'],
+                        ),
+                      )
+                    ],
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: weatherAttributeBox(
+                          context,
+                          icon: Icons.air_rounded,
+                          attribute: "Wind Speed",
+                          value: weatherData['WindSpeed'],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                        child: weatherAttributeBox(
+                          context,
+                          icon: Icons.thermostat_rounded,
+                          attribute: " Feels like ",
+                          value: weatherData['FeelsLike'],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                        child: weatherAttributeBox(
+                          context,
+                          icon: Icons.wb_twilight_rounded,
+                          attribute: "Sunset",
+                          value: weatherData['Sunset'],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                        child: weatherAttributeBox(
+                          context,
+                          icon: Icons.visibility_rounded,
+                          attribute: "Visiblity",
+                          value: weatherData['Visiblity'],
+                        ),
+                      ),
+                      Padding(
+                        padding:
+                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                        child: weatherAttributeBox(
+                          context,
+                          icon: Icons.umbrella_rounded,
+                          attribute: "Rain",
+                          value: weatherData['Rain'],
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+          actions: [
+            TextButton(
+              child: const Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final locationNotifier = ref.watch(locationProvider.notifier);
@@ -157,7 +300,7 @@ class DashBoardState extends ConsumerState<DashBoard> {
                                             12.0, 12.0, 12.0, 4.0),
                                         child: weatherAttribute(
                                           context,
-                                          icon: Icons.wb_sunny_rounded,
+                                          icon: Icons.brightness_high_sharp,
                                           attribute: "UV Index",
                                           value: "3",
                                         ),
@@ -196,7 +339,27 @@ class DashBoardState extends ConsumerState<DashBoard> {
                               ),
                               IconButton(
                                   iconSize: 35.0,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    _showMoreDetails(context, {
+                                      'iconCode': data.weather[0].icon,
+                                      'temp':
+                                          "${data.main.temp.toStringAsFixed(0)} °C",
+                                      'description': data.weather[0].main,
+                                      'Humidity': "${data.main.humidity} %",
+                                      'WindSpeed': data.wind.speed.toString(),
+                                      'UVIndex': "3",
+                                      'FeelsLike':
+                                          "${data.main.feelsLike.round().toString()}°C",
+                                      'Sunrise': "1",
+                                      'Sunset': "2",
+                                      'Cloud %':
+                                          "${data.clouds.all.toString()}%",
+                                      'Visiblity':
+                                          "${data.visibility.toString()} m",
+                                      'Rain': data.rain?.h ?? "No Rain",
+                                      'Pressure': "${data.main.pressure} Pa"
+                                    });
+                                  },
                                   icon: const Icon(
                                       Icons.arrow_drop_down_outlined))
                             ],

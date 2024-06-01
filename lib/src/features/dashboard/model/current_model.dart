@@ -24,9 +24,11 @@ class CurrentWeatherModel {
   final int id;
   final String? name;
   final int cod;
+  final Rain? rain;
 
   CurrentWeatherModel({
     required this.coord,
+    this.rain,
     required this.weather,
     required this.base,
     required this.main,
@@ -57,6 +59,7 @@ class CurrentWeatherModel {
         id: json["id"],
         name: json["name"],
         cod: json["cod"],
+        // rain: Rain.fromJson(json["h"])
       );
 
   Map<String, dynamic> toJson() => {
@@ -73,6 +76,23 @@ class CurrentWeatherModel {
         "id": id,
         "name": name,
         "cod": cod,
+        // "rain": rain.toJson(),
+      };
+}
+
+class Rain {
+  final num? h;
+
+  Rain({
+    this.h,
+  });
+
+  factory Rain.fromJson(Map<String, dynamic> json) => Rain(
+        h: json["1h"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "h": h,
       };
 }
 
