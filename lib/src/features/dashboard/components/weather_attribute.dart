@@ -12,15 +12,18 @@ Row weatherAttribute(
     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     crossAxisAlignment: CrossAxisAlignment.center,
     children: [
-      Icon(icon, color: fontColor),
+      Icon(icon, color: fontColor, size: 32.0),
       const Gap(10),
       Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(attribute,
-              style: TextStyle(color: fontColor, fontWeight: FontWeight.w700)),
-          Text(value, style: TextStyle(color: fontColor)),
+              style: TextStyle(
+                  color: fontColor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16.0)),
+          Text(value, style: TextStyle(color: fontColor, fontSize: 15.0)),
         ],
       )
     ],
