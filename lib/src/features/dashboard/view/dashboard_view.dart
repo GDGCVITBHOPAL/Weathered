@@ -285,7 +285,8 @@ class DashBoard extends ConsumerWidget {
                                           context,
                                           icon: Icons.air_rounded,
                                           attribute: "Wind Speed",
-                                          value: data.wind.speed.toString(),
+                                          value:
+                                              "${data.wind.speed.toString()} m/s",
                                         ),
                                       ),
                                       Padding(
@@ -306,18 +307,34 @@ class DashBoard extends ConsumerWidget {
                               IconButton(
                                   iconSize: 35.0,
                                   onPressed: () {
+                                    int unixTimestampsunrise = data.sys.sunrise;
+                                    int unixTimestampsunset = data.sys.sunset;
+
+                                    DateTime sunRise =
+                                        DateTime.fromMillisecondsSinceEpoch(
+                                            unixTimestampsunrise * 1000);
+                                    DateTime sunSet =
+                                        DateTime.fromMillisecondsSinceEpoch(
+                                            unixTimestampsunset * 1000);
+
+                                    String sunRiseMain =
+                                        DateFormat('h:mm a').format(sunRise);
+                                    String sunSetMain =
+                                        DateFormat('h:mm a').format(sunSet);
+
                                     _showMoreDetails(context, {
                                       'iconCode': data.weather[0].icon,
                                       'temp':
                                           "${data.main.temp.toStringAsFixed(0)} °C",
                                       'description': data.weather[0].main,
                                       'Humidity': "${data.main.humidity} %",
-                                      'WindSpeed': data.wind.speed.toString(),
+                                      'WindSpeed':
+                                          "${data.wind.speed.toString()} m/s",
                                       'UVIndex': "3",
                                       'FeelsLike':
                                           "${data.main.feelsLike.round().toString()}°C",
-                                      'Sunrise': "1",
-                                      'Sunset': "2",
+                                      'Sunrise': sunRiseMain,
+                                      'Sunset': sunSetMain,
                                       'Cloud %':
                                           "${data.clouds.all.toString()}%",
                                       'Visiblity':
@@ -377,8 +394,9 @@ class DashBoard extends ConsumerWidget {
                                   DateTime.parse(data.list[index].dtTxt);
                               String formattedDate =
                                   DateFormat.MMMMd('en_US').format(date);
-                              String formattedTime = DateFormat.jm().format(date);
-                          
+                              String formattedTime =
+                                  DateFormat.jm().format(date);
+
                               return Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),
@@ -387,7 +405,7 @@ class DashBoard extends ConsumerWidget {
                                       .primaryContainer,
                                   // color: Colors.blue
                                 ),
-                          
+
                                 width: 150, // Adjust the width as needed
                                 margin: const EdgeInsets.all(8.0),
                                 child: Column(

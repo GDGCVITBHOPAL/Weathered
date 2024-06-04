@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
+import 'package:weathered/src/features/dashboard/components/weather_attribute.dart';
 import 'package:weathered/src/features/forecast/data/providers.dart';
 
 import '../../../core/components/common.dart';
@@ -24,20 +25,56 @@ class _ForecastViewState extends ConsumerState<ForecastView> {
             "Weather Details",
             style: AppStyle.textTheme.titleSmall,
           ),
-          content: Column(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text("${weatherData['date']}",
-                  style: AppStyle.textTheme.titleSmall),
-              Image.network(
-                  "https://openweathermap.org/img/wn/${weatherData['iconCode']}@4x.png"),
-              Text("Maximum: ${weatherData['tempMax']}°C"),
-              Text("Minimum: ${weatherData['tempMin']}°C"),
-              Text("Description: ${weatherData['description']}"),
-
-              // Add more weather details here
-            ],
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text("${weatherData['date']}",
+                    style: AppStyle.textTheme.titleSmall),
+                Image.network(
+                    "https://openweathermap.org/img/wn/${weatherData['iconCode']}@4x.png"),
+                Text("${weatherData['description']}",
+                    style: AppStyle.textTheme.headlineMedium),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(8.0, 10.0, 8.0, 8.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.brightness_high_sharp,
+                    attribute: "Maximum",
+                    value: "${weatherData['tempMax']}°C",
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(7.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.sunny,
+                    attribute: "Minimum",
+                    value: "${weatherData['tempMin']}°C",
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(7.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.water_drop_rounded,
+                    attribute: "Humidity",
+                    value: "${weatherData["humidity"]} %",
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(7.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.cloud,
+                    attribute: "Cloud %",
+                    value: "${weatherData["cloud %"]} %",
+                  ),
+                ),
+              ],
+            ),
           ),
           actions: [
             TextButton(
@@ -84,6 +121,7 @@ class _ForecastViewState extends ConsumerState<ForecastView> {
                     return GestureDetector(
                       onTap: () {
                         _showWeatherDetails(context, {
+                          'cloud %': data.list[filterIndex].clouds.all,
                           'iconCode': data.list[filterIndex].weather[0].icon,
                           'date': formattedDate,
                           'tempMax': data.list[filterIndex].main.tempMax
@@ -92,6 +130,7 @@ class _ForecastViewState extends ConsumerState<ForecastView> {
                               .toStringAsFixed(0),
                           'description':
                               data.list[filterIndex].weather[0].description,
+                          'humidity': data.list[filterIndex].main.humidity,
                         });
                       },
                       child: MatContainer.primary(
