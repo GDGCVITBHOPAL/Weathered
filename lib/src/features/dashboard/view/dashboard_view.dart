@@ -12,7 +12,7 @@ import '../data/api_call.dart';
 
 class DashBoard extends ConsumerWidget {
   const DashBoard({super.key});
- 
+
   //for overlay of the more info on weather
   void _showMoreDetails(BuildContext context, dynamic weatherData) {
     showDialog(
@@ -23,126 +23,103 @@ class DashBoard extends ConsumerWidget {
             "More Details",
             style: AppStyle.textTheme.titleSmall,
           ),
-          content: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: weatherAttributeBox(
-                          context,
-                          icon: Icons.water_drop_rounded,
-                          attribute: "Humidity",
-                          value: weatherData['Humidity'],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
-                        child: weatherAttributeBox(
-                          context,
-                          icon: Icons.brightness_high_sharp,
-                          attribute: "UV Index",
-                          value: weatherData['UVIndex'],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
-                        child: weatherAttributeBox(
-                          context,
-                          icon: Icons.sunny,
-                          attribute: "Sunrise",
-                          value: weatherData['Sunrise'],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
-                        child: weatherAttributeBox(
-                          context,
-                          icon: Icons.cloud,
-                          attribute: "Cloud %",
-                          value: weatherData['Cloud %'],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
-                        child: weatherAttributeBox(
-                          context,
-                          icon: Icons.tire_repair_rounded,
-                          attribute: "Pressure",
-                          value: weatherData['Pressure'],
-                        ),
-                      )
-                    ],
+          content: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.water_drop_rounded,
+                    attribute: "Humidity",
+                    value: weatherData['Humidity'],
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(12.0),
-                        child: weatherAttributeBox(
-                          context,
-                          icon: Icons.air_rounded,
-                          attribute: "Wind Speed",
-                          value: weatherData['WindSpeed'],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
-                        child: weatherAttributeBox(
-                          context,
-                          icon: Icons.thermostat_rounded,
-                          attribute: " Feels like ",
-                          value: weatherData['FeelsLike'],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
-                        child: weatherAttributeBox(
-                          context,
-                          icon: Icons.wb_twilight_rounded,
-                          attribute: "Sunset",
-                          value: weatherData['Sunset'],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
-                        child: weatherAttributeBox(
-                          context,
-                          icon: Icons.visibility_rounded,
-                          attribute: "Visiblity",
-                          value: weatherData['Visiblity'],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
-                        child: weatherAttributeBox(
-                          context,
-                          icon: Icons.umbrella_rounded,
-                          attribute: "Rain",
-                          value: weatherData['Rain'],
-                        ),
-                      )
-                    ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.brightness_high_sharp,
+                    attribute: "UV Index",
+                    value: weatherData['UVIndex'],
                   ),
-                ],
-              ),
-            ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.sunny,
+                    attribute: "Sunrise",
+                    value: weatherData['Sunrise'],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.cloud,
+                    attribute: "Cloud %",
+                    value: weatherData['Cloud %'],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.tire_repair_rounded,
+                    attribute: "Pressure",
+                    value: weatherData['Pressure'],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.air_rounded,
+                    attribute: "Wind Speed",
+                    value: weatherData['WindSpeed'],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.thermostat_rounded,
+                    attribute: " Feels like ",
+                    value: weatherData['FeelsLike'],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.wb_twilight_rounded,
+                    attribute: "Sunset",
+                    value: weatherData['Sunset'],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.visibility_rounded,
+                    attribute: "Visiblity",
+                    value: weatherData['Visiblity'],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 4.0),
+                  child: weatherAttributeBox(
+                    context,
+                    icon: Icons.umbrella_rounded,
+                    attribute: "Rain",
+                    value: weatherData['Rain'],
+                  ),
+                ),
+              ],
+            ),
           ),
           actions: [
             TextButton(
@@ -451,4 +428,3 @@ class DashBoard extends ConsumerWidget {
 }
 
 var logger1 = Logger();
-
