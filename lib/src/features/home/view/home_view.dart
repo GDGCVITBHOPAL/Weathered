@@ -2,6 +2,7 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:weathered/src/features/map/provider/location_provider.dart';
 
 import '../../../core/components/common.dart';
 import '../../dashboard/view/dashboard_view.dart';
@@ -19,8 +20,9 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
-    super.initState();
     requestLocationPermission();
+    LocationNotifier().getLocation();
+    super.initState();
   }
 
   @override

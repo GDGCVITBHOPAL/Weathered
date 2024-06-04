@@ -267,8 +267,8 @@ class City {
 }
 
 class Coord {
-  final double lat;
-  final double lon;
+  final double? lat;
+  final double? lon;
 
   Coord({
     required this.lat,

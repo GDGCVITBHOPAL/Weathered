@@ -4,23 +4,15 @@ import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:weathered/src/features/forecast/data/api_call_weekly.dart';
-import 'package:weathered/src/features/map/provider/location_provider.dart';
 import 'package:weathered/src/utils/style.dart';
 
 import '../../../core/components/common.dart';
 import '../components/weather_attribute.dart';
 import '../data/api_call.dart';
 
-class DashBoard extends ConsumerStatefulWidget {
+class DashBoard extends ConsumerWidget {
   const DashBoard({super.key});
-
-  @override
-  ConsumerState<ConsumerStatefulWidget> createState() => DashBoardState();
-}
-
-var logger1 = Logger();
-
-class DashBoardState extends ConsumerState<DashBoard> {
+ 
   //for overlay of the more info on weather
   void _showMoreDetails(BuildContext context, dynamic weatherData) {
     showDialog(
@@ -166,17 +158,15 @@ class DashBoardState extends ConsumerState<DashBoard> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final locationNotifier = ref.watch(locationProvider.notifier);
-    final currentWeatherData = ref.watch(currentWeatherDataProvider);
-    final hourlyWeatherData = ref.watch(weeklyWeatherDataProvider);
-
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentWeatherDataAsync = ref.watch(currentWeatherDataProvider);
+    final hourlyWeatherDataAsync = ref.watch(weeklyWeatherDataProvider);
     return Scaffold(
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
-            currentWeatherData.when(
+            currentWeatherDataAsync.when(
               data: (data) {
                 logger1.i(data);
                 return Column(
@@ -199,13 +189,12 @@ class DashBoardState extends ConsumerState<DashBoard> {
                       ],
                     ),
                     const Gap(8),
-                    // TODO: Display City Name from Geocoding
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Bhopal, MP",
-                          style: TextStyle(
+                          data.cityName,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 24,
                           ),
@@ -399,7 +388,7 @@ class DashBoardState extends ConsumerState<DashBoard> {
                   const Gap(8),
                   SizedBox(
                       height: 200, // Adjust the height as needed
-                      child: hourlyWeatherData.when(data: (data) {
+                      child: hourlyWeatherDataAsync.when(data: (data) {
                         return ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemCount: 8,
@@ -460,3 +449,6 @@ class DashBoardState extends ConsumerState<DashBoard> {
     );
   }
 }
+
+var logger1 = Logger();
+

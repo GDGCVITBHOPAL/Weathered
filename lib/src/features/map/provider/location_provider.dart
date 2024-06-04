@@ -1,47 +1,30 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:weathered/src/features/dashboard/data/weather_repository.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-final fakeP = Position(
-  longitude: 77.412613,
-  latitude: 23.259933,
-  timestamp: DateTime.now(),
-  accuracy: 10.0,
-  altitude: 100.0,
-  altitudeAccuracy: 5.0,
-  heading: 90.0,
-  headingAccuracy: 2.0,
-  speed: 20.0,
-  speedAccuracy: 1.0,
-);
+class LocationNotifier extends ChangeNotifier {
+  LatLng _coords = const LatLng(0, 0);
+  LatLng get coords => _coords;
 
-class LocationNotifier extends StateNotifier<Position> {
-  LocationNotifier() : super(fakeP);
-
-  void updateLocation() async {
+  Future<void> getLocation() async {
     try {
-      state = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
+      final position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high,
+      );
+      _coords = LatLng(position.latitude, position.longitude);
+      notifyListeners();
     } catch (e) {
       return Future.error("Failed to get location: $e");
     }
   }
-
-  Future<List<Placemark>> getCity(Position position) async {
-    try {
-      final placemarks =
-          await placemarkFromCoordinates(position.latitude, position.longitude);
-      logger.i(placemarks);
-      return placemarks;
-    } catch (e) {
-      return [];
-    }
-  }
 }
 
-final locationProvider = StateNotifierProvider<LocationNotifier, Position>(
-    (ref) => LocationNotifier());
+final locationProvider = ChangeNotifierProvider<LocationNotifier>((ref) {
+  final coords = LocationNotifier();
+  coords.getLocation();
+  return coords;
+});
 
 class PermissionNotifier extends StateNotifier<bool> {
   PermissionNotifier() : super(false);
@@ -58,4 +41,5 @@ class PermissionNotifier extends StateNotifier<bool> {
 }
 
 final permissionProvider = StateNotifierProvider<PermissionNotifier, bool>(
-    (ref) => PermissionNotifier());
+  (ref) => PermissionNotifier(),
+);

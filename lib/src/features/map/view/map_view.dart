@@ -44,26 +44,26 @@ class MapViewState extends State<MapView> {
   Widget build(BuildContext context) {
     return Scaffold(body: Consumer(
       builder: (context, ref, child) {
-        final position = ref.watch(locationProvider);
-        if (position is AsyncLoading) {
+        final coords = ref.watch(locationProvider).coords;
+        if (coords is AsyncLoading) {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (position is AsyncError) {
-          logger.e(position);
+        } else if (coords is AsyncError) {
+          logger.e(coords);
           return Text(
-            'Error : $position',
+            'Error : $coords',
             textAlign: TextAlign.center,
           );
         } else {
-          logger.e(position);
+          logger.e(coords);
           return GoogleMap(
             mapType: MapType.normal,
             myLocationEnabled: true,
             compassEnabled: true,
             myLocationButtonEnabled: true,
             initialCameraPosition: CameraPosition(
-                target: LatLng(position.latitude, position.longitude),
+                target: LatLng(coords.latitude, coords.longitude),
                 zoom: 5.0),
             onMapCreated: (GoogleMapController controller) {
               _controller.complete(controller);

@@ -6,7 +6,7 @@ import 'dart:convert';
 //     final currentWeather = currentWeatherFromJson(jsonString);
 CurrentWeatherModel currentWeatherFromJson(String str) =>
     CurrentWeatherModel.fromJson(json.decode(str));
-
+  
 String currentWeatherToJson(CurrentWeatherModel data) =>
     json.encode(data.toJson());
 
@@ -22,7 +22,7 @@ class CurrentWeatherModel {
   final Sys sys;
   final int timezone;
   final int id;
-  final String? name;
+  final String cityName;
   final int cod;
   final Rain? rain;
 
@@ -39,7 +39,7 @@ class CurrentWeatherModel {
     required this.sys,
     required this.timezone,
     required this.id,
-    required this.name,
+    required this.cityName,
     required this.cod,
   });
 
@@ -57,7 +57,7 @@ class CurrentWeatherModel {
         sys: Sys.fromJson(json["sys"]),
         timezone: json["timezone"],
         id: json["id"],
-        name: json["name"],
+        cityName: json["name"],
         cod: json["cod"],
         // rain: Rain.fromJson(json["h"])
       );
@@ -74,7 +74,7 @@ class CurrentWeatherModel {
         "sys": sys.toJson(),
         "timezone": timezone,
         "id": id,
-        "name": name,
+        "name": cityName,
         "cod": cod,
         // "rain": rain.toJson(),
       };
@@ -221,8 +221,8 @@ class Weather {
 }
 
 class Wind {
-  final double speed;
-  final int deg;
+  final num speed;
+  final num deg;
 
   Wind({
     required this.speed,
