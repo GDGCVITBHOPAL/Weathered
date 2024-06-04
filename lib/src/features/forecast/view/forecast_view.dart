@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
-import 'package:weathered/src/features/forecast/data/api_call_weekly.dart';
+import 'package:weathered/src/features/forecast/data/providers.dart';
 
 import '../../../core/components/common.dart';
 import '../../../utils/style.dart';
@@ -54,16 +54,16 @@ class _ForecastViewState extends ConsumerState<ForecastView> {
 
   @override
   Widget build(BuildContext context) {
-    final weeklyforecast = ref.watch(weeklyWeatherDataProvider);
+    final quarterlyForecast = ref.watch(quarterlyWeatherDataProvider);
     return Scaffold(
-      body: weeklyforecast.when(data: (data) {
+      body: quarterlyForecast.when(data: (data) {
         logger.i(data);
         return Column(
           children: [
             const Gap(8),
             Center(
               child: Text(
-                'Week Forecast',
+                'Daily Forecast',
                 style: AppStyle.textTheme.titleLarge,
               ),
             ),

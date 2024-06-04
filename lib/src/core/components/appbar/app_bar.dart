@@ -23,6 +23,7 @@ AppBar appBar(BuildContext context) {
             onPressed: () {},
           ),
         )
-      ]
+      ],
+      backgroundColor: Colors.transparent,
       );
 }

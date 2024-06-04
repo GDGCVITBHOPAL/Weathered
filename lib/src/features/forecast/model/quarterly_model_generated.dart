@@ -1,21 +1,18 @@
 import 'dart:convert';
 
-// To parse this JSON data, do
-//
-//     final weeklyWeather = weeklyWeatherFromJson(jsonString);
-WeeklyWeather weeklyWeatherFromJson(String str) =>
-    WeeklyWeather.fromJson(json.decode(str));
+QuarterlyWeather quarterlyWeatherFromJson(String str) =>
+    QuarterlyWeather.fromJson(json.decode(str));
 
-String weeklyWeatherToJson(WeeklyWeather data) => json.encode(data.toJson());
+String quarterlyWeatherToJson(QuarterlyWeather data) => json.encode(data.toJson());
 
-class WeeklyWeather {
+class QuarterlyWeather {
   final String cod;
   final int message;
   final int cnt;
   final List<WeatherList> list;
   final City city;
 
-  WeeklyWeather({
+  QuarterlyWeather({
     required this.cod,
     required this.message,
     required this.cnt,
@@ -23,7 +20,7 @@ class WeeklyWeather {
     required this.city,
   });
 
-  factory WeeklyWeather.fromJson(Map<String, dynamic> json) => WeeklyWeather(
+  factory QuarterlyWeather.fromJson(Map<String, dynamic> json) => QuarterlyWeather(
         cod: json["cod"],
         message: json["message"],
         cnt: json["cnt"],

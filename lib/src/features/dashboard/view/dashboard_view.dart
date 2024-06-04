@@ -3,12 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
-import 'package:weathered/src/features/forecast/data/api_call_weekly.dart';
+import 'package:weathered/src/features/forecast/data/providers.dart';
 import 'package:weathered/src/utils/style.dart';
 
 import '../../../core/components/common.dart';
 import '../components/weather_attribute.dart';
-import '../data/api_call.dart';
+import '../data/providers.dart';
 
 class DashBoard extends ConsumerWidget {
   const DashBoard({super.key});
@@ -137,7 +137,7 @@ class DashBoard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentWeatherDataAsync = ref.watch(currentWeatherDataProvider);
-    final hourlyWeatherDataAsync = ref.watch(weeklyWeatherDataProvider);
+    final quarterlyWeatherDataAsync = ref.watch(quarterlyWeatherDataProvider);
     return Scaffold(
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -359,49 +359,52 @@ class DashBoard extends ConsumerWidget {
               child: Column(
                 children: [
                   const Text(
-                    "3 Hourly Forecast",
+                    "Quarterly Forecast",
                     style: TextStyle(fontSize: 23, fontWeight: FontWeight.w600),
                   ),
                   const Gap(8),
                   SizedBox(
                       height: 200, // Adjust the height as needed
-                      child: hourlyWeatherDataAsync.when(data: (data) {
-                        return ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 8,
-                          itemBuilder: (context, index) {
-                            //Time Formatter
-                            DateTime date =
-                                DateTime.parse(data.list[index].dtTxt);
-                            String formattedDate =
-                                DateFormat.MMMMd('en_US').format(date);
-                            String formattedTime = DateFormat.jm().format(date);
-
-                            return Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(16),
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .primaryContainer,
-                                // color: Colors.blue
-                              ),
-
-                              width: 150, // Adjust the width as needed
-                              margin: const EdgeInsets.all(5.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Text(formattedDate),
-                                  Text(formattedTime),
-                                  Image.network(
-                                      "https://openweathermap.org/img/wn/${data.list[index].weather[0].icon}@2x.png"),
-                                  Text(
-                                      "${data.list[index].main.temp.toStringAsFixed(0)}°C")
-                                ],
-                              ),
-                            );
-                          },
+                      child: quarterlyWeatherDataAsync.when(data: (data) {
+                        return Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 8,
+                            itemBuilder: (context, index) {
+                              //Time Formatter
+                              DateTime date =
+                                  DateTime.parse(data.list[index].dtTxt);
+                              String formattedDate =
+                                  DateFormat.MMMMd('en_US').format(date);
+                              String formattedTime = DateFormat.jm().format(date);
+                          
+                              return Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(16),
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .primaryContainer,
+                                  // color: Colors.blue
+                                ),
+                          
+                                width: 150, // Adjust the width as needed
+                                margin: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Text(formattedDate),
+                                    Text(formattedTime),
+                                    Image.network(
+                                        "https://openweathermap.org/img/wn/${data.list[index].weather[0].icon}@2x.png"),
+                                    Text(
+                                        "${data.list[index].main.temp.toStringAsFixed(0)}°C")
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
                         );
                       }, error: (error, stackTrace) {
                         logger1.e(error, error: error, stackTrace: stackTrace);

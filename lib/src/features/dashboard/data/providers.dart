@@ -17,6 +17,5 @@ final forecastDataProvider = FutureProvider<ForecastModel>((ref) async {
 
 final weatherDataProvider = Provider<WeatherDataRepository>((ref) {
   final sd = ref.watch(locationProvider).coords;
-  print("Position from weatherDataProvider : $sd");
   return WeatherDataRepository(coords: LatLng(sd.latitude, sd.longitude));
 });
