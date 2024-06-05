@@ -440,7 +440,7 @@ class DashBoard extends ConsumerWidget {
                 ],
               ),
             ),
-            const Gap(8)
+            const Gap(8),
           ],
         ),
       ),
