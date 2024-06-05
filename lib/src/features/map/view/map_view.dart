@@ -68,8 +68,8 @@ class MapViewState extends State<MapView> {
   @override
   Widget build(BuildContext context) {
     if (!_locationPermissionGranted) {
-      return Scaffold(
-        body: const Center(
+      return const Scaffold(
+        body: Center(
           child: Text('Location permission is required to use this feature'),
         ),
       );

@@ -21,7 +21,6 @@ class ForecastTileProvider implements TileProvider {
       tileBytes = imageData.buffer.asUint8List();
     } catch (e) {
       SnackBar(content: Text(e.toString()));
-      print(e.toString());
     }
     return Tile(256, 256, tileBytes);
   }

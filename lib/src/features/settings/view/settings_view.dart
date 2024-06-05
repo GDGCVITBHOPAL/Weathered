@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -30,24 +28,24 @@ class SettingsView extends StatelessWidget {
             style: AppStyle.textTheme.titleLarge,
           ),
         ),
-        Gap(8),
+        const Gap(8),
 
         //For Dark Mode
         // The Slider is left
         Container(
-          margin: EdgeInsets.fromLTRB(16, 16, 16, 5),
+          margin: const EdgeInsets.fromLTRB(16, 16, 16, 5),
           decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.circular(15.0)),
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Row(
             children: [
-              Icon(Icons.nightlight_round, size: 35.0),
-              Gap(10.0),
-              Text("Dark Mode", style: AppStyle.textTheme.labelMedium),
+              const Icon(Icons.nightlight_round, size: 35.0),
+              const Gap(10.0),
+              Text("Display Mode", style: AppStyle.textTheme.labelMedium),
 
               // this is done to keep the Switch Widget to left
-              Expanded(
+              const Expanded(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -82,15 +80,15 @@ class SettingsView extends StatelessWidget {
             _launchUrl();
           },
           child: Container(
-            margin: EdgeInsets.fromLTRB(16, 16, 16, 5),
+            margin: const EdgeInsets.fromLTRB(16, 16, 16, 5),
             decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primaryContainer,
                 borderRadius: BorderRadius.circular(15.0)),
-            padding: EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
-                Icon(Icons.mail_outline_rounded, size: 35.0),
-                Gap(10.0),
+                const Icon(Icons.mail_outline_rounded, size: 35.0),
+                const Gap(10.0),
                 Text("Send Feedback", style: AppStyle.textTheme.labelMedium)
               ],
             ),
@@ -98,7 +96,7 @@ class SettingsView extends StatelessWidget {
         ),
 
         // Made with Love
-        Expanded(
+        const Expanded(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             crossAxisAlignment: CrossAxisAlignment.center,
