@@ -4,20 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
+import 'package:weathered/src/api/api_key.dart';
 import 'package:weathered/src/features/forecast/model/quarterly_model_generated.dart';
 
 var logger = Logger();
 
 class QuarterlyWeatherDataRepository {
-  //TODO : Remove API Key
-  String apiKey = "b811e375e46ccd83825fb9cb2d9813da";
   final LatLng coords;
   QuarterlyWeatherDataRepository({required this.coords});
 
   // get currentWeather Data
   Future<QuarterlyWeather> getQuarterlyWeatherData() async {
     String url =
-        "http://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=b811e375e46ccd83825fb9cb2d9813da&units=metric&cnt=40";
+        "http://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&appid=$apiKey&units=metric&cnt=40";
 
     return http.get(Uri.parse(url)).then((http.Response response) {
       logger.i(response.body);

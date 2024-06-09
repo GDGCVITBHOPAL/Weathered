@@ -25,6 +25,11 @@ class MapViewState extends State<MapView> {
     requestLocationPermission();
   }
 
+  Future<void> _recenterMap(LatLng position) async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newLatLng(position));
+  }
+
   Future<void> requestLocationPermission() async {
     LocationPermission permission;
     bool isServiceEnabled = await Geolocator.isLocationServiceEnabled();
@@ -76,6 +81,35 @@ class MapViewState extends State<MapView> {
     }
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        title: const Text(
+          "Heat Map",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+        ),
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+      ),
+      floatingActionButton: Align(
+        alignment: Alignment.bottomLeft,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          child: FloatingActionButton(
+            backgroundColor: const Color.fromRGBO(255, 255, 255, 0.75),
+            onPressed: () async {
+              final container = ProviderScope.containerOf(context);
+              final coords = container.read(locationProvider).coords;
+              logger.i(coords);
+              // if (coords is! AsyncData) return;
+
+              final position = LatLng(coords.latitude, coords.longitude);
+              await _recenterMap(position);
+            },
+            child: const Icon(Icons.my_location),
+          ),
+        ),
+      ),
       body: Consumer(
         builder: (context, ref, child) {
           final coords = ref.watch(locationProvider).coords;
@@ -95,7 +129,7 @@ class MapViewState extends State<MapView> {
               mapType: MapType.normal,
               myLocationEnabled: true,
               compassEnabled: true,
-              myLocationButtonEnabled: true,
+              myLocationButtonEnabled: false,
               initialCameraPosition: CameraPosition(
                 target: LatLng(coords.latitude, coords.longitude),
                 zoom: 5.0,
