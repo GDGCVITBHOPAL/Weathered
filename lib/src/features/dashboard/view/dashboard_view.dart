@@ -146,6 +146,16 @@ class DashBoard extends ConsumerWidget {
             currentWeatherDataAsync.when(
               data: (data) {
                 logger1.i(data);
+                if (data.cityName == "Globe") {
+                  return const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(),
+                    ],
+                  );
+                }
                 return Column(
                   children: [
                     const Gap(8),
@@ -383,6 +393,16 @@ class DashBoard extends ConsumerWidget {
                   SizedBox(
                       height: 200, // Adjust the height as needed
                       child: quarterlyWeatherDataAsync.when(data: (data) {
+                        if (data.city.name == "Globe") {
+                          return const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              CircularProgressIndicator(),
+                            ],
+                          );
+                        }
                         return Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: ListView.builder(

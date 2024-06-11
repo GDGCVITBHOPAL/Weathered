@@ -40,7 +40,7 @@ class SettingsView extends ConsumerWidget {
               color: Theme.of(context).colorScheme.primaryContainer,
               borderRadius: BorderRadius.circular(15.0),
             ),
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
                 const Icon(Icons.display_settings_rounded, size: 30.0),
@@ -90,7 +90,7 @@ class SettingsView extends ConsumerWidget {
                 color: Theme.of(context).colorScheme.primaryContainer,
                 borderRadius: BorderRadius.circular(15.0),
               ),
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 children: [
                   const Icon(Icons.mail_outline_rounded, size: 30.0),
