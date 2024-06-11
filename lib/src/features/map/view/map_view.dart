@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:gap/gap.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:weathered/src/features/dashboard/data/weather_repository.dart';
@@ -27,7 +29,7 @@ class MapViewState extends State<MapView> {
 
   Future<void> _recenterMap(LatLng position) async {
     final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newLatLng(position));
+    controller.animateCamera(CameraUpdate.newLatLngZoom(position, 8.0));
   }
 
   Future<void> requestLocationPermission() async {
@@ -96,19 +98,36 @@ class MapViewState extends State<MapView> {
         alignment: Alignment.bottomLeft,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30.0),
-          child: FloatingActionButton(
-            foregroundColor: Colors.black87,
-            backgroundColor: const Color.fromRGBO(255, 255, 255, 0.75),
-            onPressed: () async {
-              final container = ProviderScope.containerOf(context);
-              final coords = container.read(locationProvider).coords;
-              logger.i(coords);
-              // if (coords is! AsyncData) return;
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(2.0),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(15),
+                    color: const Color.fromRGBO(255, 255, 255, 0.9)),
+                child: SvgPicture.asset(
+                  'assets/icons/weather/tempMeasure.svg',
+                  width: 40,
+                  height: 250,
+                ),
+              ),
+              const Gap(25),
+              FloatingActionButton(
+                foregroundColor: Colors.black87,
+                backgroundColor: const Color.fromRGBO(255, 255, 255, 0.75),
+                onPressed: () async {
+                  final container = ProviderScope.containerOf(context);
+                  final coords = container.read(locationProvider).coords;
+                  logger.i(coords);
+                  // if (coords is! AsyncData) return;
 
-              final position = LatLng(coords.latitude, coords.longitude);
-              await _recenterMap(position);
-            },
-            child: const Icon(Icons.my_location),
+                  final position = LatLng(coords.latitude, coords.longitude);
+                  await _recenterMap(position);
+                },
+                child: const Icon(Icons.my_location),
+              ),
+            ],
           ),
         ),
       ),
