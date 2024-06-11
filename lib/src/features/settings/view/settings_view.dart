@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -35,6 +34,7 @@ class SettingsView extends ConsumerWidget {
 
           // Theme Mode Dropdown
           Container(
+            height: 75,
             margin: const EdgeInsets.fromLTRB(16, 16, 16, 5),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.primaryContainer,
@@ -43,9 +43,9 @@ class SettingsView extends ConsumerWidget {
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: [
-                const Icon(Icons.display_settings_rounded, size: 35.0),
+                const Icon(Icons.display_settings_rounded, size: 30.0),
                 const Gap(10.0),
-                Text('Theme Mode', style: AppStyle.textTheme.labelMedium),
+                Text('Theme Mode', style: AppStyle.textTheme.labelSmall),
                 Expanded(
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
@@ -84,6 +84,7 @@ class SettingsView extends ConsumerWidget {
           GestureDetector(
             onTap: _launchUrl,
             child: Container(
+              height: 75,
               margin: const EdgeInsets.fromLTRB(16, 16, 16, 5),
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primaryContainer,
@@ -92,9 +93,9 @@ class SettingsView extends ConsumerWidget {
               padding: const EdgeInsets.all(16.0),
               child: Row(
                 children: [
-                  const Icon(Icons.mail_outline_rounded, size: 35.0),
+                  const Icon(Icons.mail_outline_rounded, size: 30.0),
                   const Gap(10.0),
-                  Text("Send Feedback", style: AppStyle.textTheme.labelMedium),
+                  Text("Send Feedback", style: AppStyle.textTheme.labelSmall),
                 ],
               ),
             ),

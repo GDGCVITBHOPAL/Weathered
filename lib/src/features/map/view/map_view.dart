@@ -85,7 +85,8 @@ class MapViewState extends State<MapView> {
       appBar: AppBar(
         title: const Text(
           "Heat Map",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 30, color: Colors.black),
         ),
         elevation: 0,
         centerTitle: true,
@@ -96,6 +97,7 @@ class MapViewState extends State<MapView> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: FloatingActionButton(
+            foregroundColor: Colors.black87,
             backgroundColor: const Color.fromRGBO(255, 255, 255, 0.75),
             onPressed: () async {
               final container = ProviderScope.containerOf(context);

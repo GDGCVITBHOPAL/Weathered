@@ -1,3 +1,4 @@
+import 'package:app_settings/app_settings.dart';
 import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -62,25 +63,39 @@ class _HomeViewState extends State<HomeView> {
     if (!_locationPermissionGranted) {
       return Scaffold(
         appBar: appBar(context),
-        body: const Center(
+        body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Icon(
+              const Icon(
                 Icons.location_disabled_sharp,
                 color: Colors.red,
                 size: 60.0,
               ),
-              Gap(10.0),
-              SizedBox(
+              const Gap(10.0),
+              const SizedBox(
                 width: 500.0,
-                child: Text(
-                  'Location permission is required to use this app',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                child: Column(
+                  children: [
+                    Text(
+                      'Location permission is required to use this app',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          fontSize: 20.0, fontWeight: FontWeight.bold),
+                    ),
+                    Gap(7.5),
+                    Text("Restart the app again with settings enabled")
+                  ],
                 ),
               ),
+              const Gap(15.0),
+              ElevatedButton(
+                  onPressed: () => {
+                        AppSettings.openAppSettings(
+                            type: AppSettingsType.location)
+                      },
+                  child: const Text("Open Location Settings"))
             ],
           ),
         ),

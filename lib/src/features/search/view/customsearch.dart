@@ -48,15 +48,18 @@ class _SearchCityState extends ConsumerState<SearchCity> {
         child: Center(
           child: Column(
             children: [
-              const SizedBox(height: 16),
               Text(
                 "Search for other cities",
-                style: AppStyle.textTheme.titleLarge,
+                textAlign: TextAlign.center,
+                style: AppStyle.textTheme.titleMedium,
               ),
-              const SizedBox(height: 16),
+              const Gap(20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: TextField(
+                  onTapOutside: (event) {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  },
                   controller: _controller,
                   decoration: const InputDecoration(
                     labelText: 'City Name',
@@ -89,14 +92,24 @@ class _SearchCityState extends ConsumerState<SearchCity> {
                           children: [
                             Text(
                               'Weather in ${weather.cityName}',
-                              style: AppStyle.textTheme.labelMedium,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontFamily: 'Poppins',
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
-                            Text(
-                                'Temperature: ${weather.main.temp.round()} °C'),
                             Image.network(
                               'https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png',
+                              scale: 0.80,
                             ),
-                            Text(weather.weather[0].description),
+                            Text(
+                              '${weather.main.temp.round()} °C',
+                              style: const TextStyle(fontSize: 18),
+                            ),
+                            Text(
+                              weather.weather[0].description,
+                              style: const TextStyle(fontSize: 18),
+                            ),
                           ],
                         );
                       },
