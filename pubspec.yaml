@@ -29,9 +29,17 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
   flutter_lints: ^3.0.1
   riverpod_lint: ^2.3.9
   build_runner: ^2.4.8
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/logo.png"
+  adaptive_icon_foreground: "assets/icons/ic_launcher_adaptive_fore.png"
+  adaptive_icon_background: "assets/icons/ic_launcher_adaptive_back.png"
 
 flutter:
   uses-material-design: true
