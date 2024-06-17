@@ -1,6 +1,5 @@
 # WEATHERED
-
-A weather forecast application built on flutter. 
+A weather forecast application built on flutter;
 
 ## Features :
 1. Material You based Theme
@@ -17,8 +16,12 @@ A weather forecast application built on flutter.
 
 
 ## Maintainers :
-1. (xkaper001)[https://github.com/xkaper001]
-2. ()
+1. [xkaper001](https://github.com/xkaper001)
+2. [TheNoob51](https://github.com/TheNoob51)
+
+## Mentors :
+1. [Sparsh-R17](https://github.com/Sparsh-R17)
+2. [Akash5336](https://github.com/Akash5336)
 
 ## Credits :
 Weather Icons Taken from [Here](https://www.figma.com/community/file/1126777451931792118/weather-glassmorphism-icon)
