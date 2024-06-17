@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
+import 'package:weathered/src/features/home/data/weather_icon_handler.dart';
 
 import '../../../utils/style.dart';
 import '../../home/view/home_view.dart';
@@ -99,10 +100,15 @@ class _SearchCityState extends ConsumerState<SearchCity> {
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
-                            Image.network(
-                              'https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png',
-                              scale: 0.80,
-                            ),
+                            WeatherIconHandler.getImage(
+                                  iconCode: weather.weather[0].icon,
+                                  height: 150,
+                                  width: 150,
+                                ) ??
+                                Image.network(
+                                  'https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png',
+                                  scale: 0.80,
+                                ),
                             Text(
                               '${weather.main.temp.round()} °C',
                               style: const TextStyle(fontSize: 18),

@@ -121,6 +121,14 @@ class WeatherIconHandler {
           width: width,
           fit: fit,
         );
+      case '50n':
+        const assetPath = 'assets/icons/weather/mist.svg';
+        return SvgPicture.asset(
+          assetPath,
+          height: height,
+          width: width,
+          fit: fit,
+        );
       default:
         return null;
     }
