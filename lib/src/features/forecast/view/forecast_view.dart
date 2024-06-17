@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
-import 'package:weathered/src/features/dashboard/components/weather_attribute.dart';
-import 'package:weathered/src/features/forecast/data/providers.dart';
-import 'package:weathered/src/features/home/data/weather_icon_handler.dart';
 
 import '../../../core/components/common.dart';
 import '../../../utils/style.dart';
+import '../../dashboard/components/weather_attribute.dart';
+import '../../home/data/weather_icon_handler.dart';
+import '../data/providers.dart';
 
 class ForecastView extends ConsumerStatefulWidget {
   const ForecastView({super.key});

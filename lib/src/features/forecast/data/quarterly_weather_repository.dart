@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:weathered/src/api/api_key.dart';
-import 'package:weathered/src/features/forecast/model/quarterly_model_generated.dart';
+
+import '../../../api/api_key.dart';
+import '../model/quarterly_model_generated.dart';
 
 
 class QuarterlyWeatherDataRepository {

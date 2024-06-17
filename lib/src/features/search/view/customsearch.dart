@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
-import 'package:weathered/src/features/home/view/home_view.dart';
-import 'package:weathered/src/features/search/services/cityWeatherProvider.dart';
-import 'package:weathered/src/utils/style.dart';
+
+import '../../../utils/style.dart';
+import '../../home/view/home_view.dart';
+import '../services/cityWeatherProvider.dart';
 
 final cityInputProvider = StateProvider<String>((ref) {
   return '';

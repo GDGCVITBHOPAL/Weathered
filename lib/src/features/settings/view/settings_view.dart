@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:weathered/main.dart';
 
+import '../../../../main.dart';
 import '../../../utils/style.dart';
 
 final Uri _url = Uri.parse('https://github.com/DSCVITBHOPAL/Weathered');

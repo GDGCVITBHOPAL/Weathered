@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:weathered/src/core/components/common.dart';
+
+import '../../../api/api_key.dart';
 
 class ForecastTileProvider implements TileProvider {
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weathered/src/features/search/view/customsearch.dart';
+
+import '../../../features/search/view/customsearch.dart';
 
 // Appbar which Contains the search icon as the leading and list icon as the trailing/actions
 AppBar appBar(BuildContext context) {

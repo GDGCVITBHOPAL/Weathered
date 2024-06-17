@@ -1,10 +1,11 @@
 // ignore_for_file: file_names
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
-import 'package:weathered/src/core/components/common.dart';
 import 'dart:convert';
 
-import 'package:weathered/src/features/search/model/modelClassCity.dart';
+
+import '../../../api/api_key.dart';
+import '../model/modelClassCity.dart';
 
 final cityWeatherProvider =
     FutureProvider.family<CityWeatherModel, String>((ref, city) async {

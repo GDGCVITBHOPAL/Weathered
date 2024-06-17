@@ -1,4 +1,4 @@
-import 'package:weathered/src/features/dashboard/model/current_model.dart';
+import 'current_model.dart';
 
 class ForecastModel {
   final Main main;
