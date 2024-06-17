@@ -5,19 +5,17 @@
   <img  width="250px" src="https://github.com/DSCVITBHOPAL/Weathered/assets/71162979/de5e04b0-7956-4329-be40-f1ee62ee9a00">
 </p>
 
-**Key Features:**
-
-- **Material You Design:** Experience a visually stunning and dynamic user interface that seamlessly adapts to your system theme preferences, ensuring a delightful visual experience.
-- **Customizable Color Scheme:** Personalize your app's appearance to perfectly match your taste with a user-friendly dynamic color scheme, empowering you to tailor the look to your liking.
-- **Dark Theme Support:** Immerse yourself in a comfortable and eye-friendly dark theme for low-light environments or simply to enhance your viewing experience.
-- **Location-Aware Weather:** Effortlessly access the current weather conditions and forecasts for your current location, granting you instant and relevant weather information. This eliminates the need for manual searches and keeps you up-to-date on what's happening outside your window.
-
+## Key Features:
+- Beautiful, dynamic Material You design adapts to your theme style of device.
+- Relax your eyes with dark theme support.
+- Get current weather for your location, instantly.
+- Heat Map to visualize the temperature across the globe. 
 
 ## Usability :
-- **Current Weather:** Stay informed about the current weather conditions at your location, including temperature, humidity, wind speed, weather icon, and a concise description. Quickly grasp the prevailing weather without having to delve into detailed forecasts.
-- **Quarterly Forecast (3-Hour Intervals):** Plan your day with confidence by accessing the detailed weather forecast for the next few hours, allowing you to be prepared for any potential changes in weather conditions.
-- **5-Day Extended Forecast:** Look ahead and get insightful forecasts for the next 5 days, helping you make informed decisions about clothing, outdoor activities, and travel plans.
-- **Search Location:**  Instantly switch to any location in the world by simply searching for it. Broaden your weather knowledge and gain insights into weather conditions in other areas.
+- Get the current weather of your location.
+- Get the quarterly(3 hour interval) weather forecast of your location.
+- Get the weather forecast of your location for the next 5 days.
+- Get the current weather of any location by searching for it.
 
 
 ## Screenshots :
@@ -33,8 +31,8 @@
 2. [Akash5336](https://github.com/Akash5336)
 
 ## Credits :
-Weather icons taken from [Here](https://www.figma.com/community/file/1126777451931792118/weather-glassmorphism-icon)
-API Services are provided by [OpenWeather](https://openweathermap.org/)
+- Weather icons taken from [Here](https://www.figma.com/community/file/1126777451931792118/weather-glassmorphism-icon)
+- API Services are provided by [OpenWeather](https://openweathermap.org/)
 
 ## Steps to run the App :
 Excited to experience WEATHERED? Here's how to set it up:
