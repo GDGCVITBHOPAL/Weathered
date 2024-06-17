@@ -75,6 +75,13 @@ class _SearchCityState extends ConsumerState<SearchCity> {
                   final city = _controller.text.trim();
                   ref.read(cityInputProvider.notifier).state = city;
                 },
+                style: ButtonStyle(
+                    backgroundColor: WidgetStatePropertyAll(
+                      Theme.of(context).colorScheme.secondaryContainer,
+                    ),
+                    foregroundColor: WidgetStatePropertyAll(
+                      Theme.of(context).colorScheme.onPrimaryContainer,
+                    )),
                 child: const Text('Submit'),
               ),
               const Gap(30),
@@ -90,34 +97,37 @@ class _SearchCityState extends ConsumerState<SearchCity> {
                         ref.watch(cityWeatherProvider(city));
                     return weatherAsyncValue.when(
                       data: (weather) {
-                        return Column(
-                          children: [
-                            Text(
-                              'Weather in ${weather.cityName}',
-                              style: const TextStyle(
-                                fontSize: 20,
-                                fontFamily: 'Poppins',
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            WeatherIconHandler.getImage(
-                                  iconCode: weather.weather[0].icon,
-                                  height: 150,
-                                  width: 150,
-                                ) ??
-                                Image.network(
-                                  'https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png',
-                                  scale: 0.80,
+                        return Container(
+                          color: Theme.of(context).colorScheme.primaryContainer,
+                          child: Column(
+                            children: [
+                              Text(
+                                'Weather in ${weather.cityName}',
+                                style: const TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'Poppins',
+                                  fontWeight: FontWeight.w600,
                                 ),
-                            Text(
-                              '${weather.main.temp.round()} °C',
-                              style: const TextStyle(fontSize: 18),
-                            ),
-                            Text(
-                              weather.weather[0].description,
-                              style: const TextStyle(fontSize: 18),
-                            ),
-                          ],
+                              ),
+                              WeatherIconHandler.getImage(
+                                    iconCode: weather.weather[0].icon,
+                                    height: 150,
+                                    width: 150,
+                                  ) ??
+                                  Image.network(
+                                    'https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png',
+                                    scale: 0.80,
+                                  ),
+                              Text(
+                                '${weather.main.temp.round()} °C',
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                              Text(
+                                weather.weather[0].description,
+                                style: const TextStyle(fontSize: 18),
+                              ),
+                            ],
+                          ),
                         );
                       },
                       loading: () => const CircularProgressIndicator(),
