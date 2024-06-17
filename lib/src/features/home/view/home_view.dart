@@ -2,11 +2,11 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:weathered/src/features/map/provider/location_provider.dart';
 
 import '../../../core/components/common.dart';
 import '../../dashboard/view/dashboard_view.dart';
 import '../../forecast/view/forecast_view.dart';
+import '../../map/provider/location_provider.dart';
 import '../../map/view/map_view.dart';
 import '../../settings/view/settings_view.dart';
 

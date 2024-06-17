@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
-import 'package:logger/logger.dart';
-import 'package:weathered/src/features/forecast/data/providers.dart';
-import 'package:weathered/src/utils/style.dart';
 
 import '../../../core/components/common.dart';
+import '../../../utils/style.dart';
+import '../../forecast/data/providers.dart';
+import '../../home/data/weather_icon_handler.dart';
 import '../components/weather_attribute.dart';
 import '../data/providers.dart';
 
 class DashBoard extends ConsumerWidget {
   const DashBoard({super.key});
 
-  //for overlay of the more info on weather
   void _showMoreDetails(BuildContext context, dynamic weatherData) {
     showDialog(
       context: context,
@@ -145,7 +144,7 @@ class DashBoard extends ConsumerWidget {
           children: [
             currentWeatherDataAsync.when(
               data: (data) {
-                logger1.i(data);
+                print(data.weather[0].icon);
                 return Column(
                   children: [
                     const Gap(8),
@@ -205,10 +204,14 @@ class DashBoard extends ConsumerWidget {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Image.network(
-                                    "https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png",
-                                    // height: 300,
-                                  ),
+                                  WeatherIconHandler.getImage(
+                                        iconCode: data.weather[0].icon,
+                                        height: 200,
+                                        width: 200,
+                                      ) ??
+                                      Image.network(
+                                        "https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png",
+                                      ),
                                   const Gap(16),
                                 ],
                               ),
@@ -338,7 +341,6 @@ class DashBoard extends ConsumerWidget {
                 );
               },
               error: (error, stackTrace) {
-                logger1.e(error, error: error, stackTrace: stackTrace);
                 return Center(
                   child: Text(
                     'Error : $error',
@@ -352,8 +354,6 @@ class DashBoard extends ConsumerWidget {
                 );
               },
             ),
-
-            //for hourly forecast
             MatContainer.primary(
               context: context,
               child: Column(
@@ -377,8 +377,9 @@ class DashBoard extends ConsumerWidget {
                                   DateTime.parse(data.list[index].dtTxt);
                               String formattedDate =
                                   DateFormat.MMMMd('en_US').format(date);
-                              String formattedTime = DateFormat.jm().format(date);
-                          
+                              String formattedTime =
+                                  DateFormat.jm().format(date);
+
                               return Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),
@@ -387,7 +388,7 @@ class DashBoard extends ConsumerWidget {
                                       .primaryContainer,
                                   // color: Colors.blue
                                 ),
-                          
+
                                 width: 150, // Adjust the width as needed
                                 margin: const EdgeInsets.all(8.0),
                                 child: Column(
@@ -396,8 +397,14 @@ class DashBoard extends ConsumerWidget {
                                   children: [
                                     Text(formattedDate),
                                     Text(formattedTime),
-                                    Image.network(
-                                        "https://openweathermap.org/img/wn/${data.list[index].weather[0].icon}@2x.png"),
+                                    WeatherIconHandler.getImage(
+                                          iconCode:
+                                              data.list[index].weather[0].icon,
+                                              height: 80,
+                                              width: 100,
+                                        ) ??
+                                        Image.network(
+                                            "https://openweathermap.org/img/wn/${data.list[index].weather[0].icon}@2x.png"),
                                     Text(
                                         "${data.list[index].main.temp.toStringAsFixed(0)}°C")
                                   ],
@@ -407,7 +414,6 @@ class DashBoard extends ConsumerWidget {
                           ),
                         );
                       }, error: (error, stackTrace) {
-                        logger1.e(error, error: error, stackTrace: stackTrace);
                         return Center(
                           child: Text(
                             'Error : $error',
@@ -429,5 +435,3 @@ class DashBoard extends ConsumerWidget {
     );
   }
 }
-
-var logger1 = Logger();

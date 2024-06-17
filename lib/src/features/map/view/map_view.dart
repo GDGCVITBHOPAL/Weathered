@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:weathered/src/features/dashboard/data/weather_repository.dart';
 
 import '../../home/view/home_view.dart';
 import '../service/forecast_tile_provider.dart';
@@ -50,13 +49,11 @@ class MapViewState extends State<MapView> {
             child: CircularProgressIndicator(),
           );
         } else if (coords is AsyncError) {
-          logger.e(coords);
           return Text(
             'Error : $coords',
             textAlign: TextAlign.center,
           );
         } else {
-          logger.e(coords);
           return GoogleMap(
             mapType: MapType.normal,
             myLocationEnabled: true,

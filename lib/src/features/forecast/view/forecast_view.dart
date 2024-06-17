@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 import 'package:weathered/src/features/forecast/data/providers.dart';
+import 'package:weathered/src/features/home/data/weather_icon_handler.dart';
 
 import '../../../core/components/common.dart';
 import '../../../utils/style.dart';
@@ -23,19 +24,25 @@ class _ForecastViewState extends ConsumerState<ForecastView> {
           title: Text(
             "Weather Details",
             style: AppStyle.textTheme.titleSmall,
+            textAlign: TextAlign.center,
           ),
           content: Column(
-            mainAxisSize: MainAxisSize.max,
+            mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text("${weatherData['date']}",
                   style: AppStyle.textTheme.titleSmall),
-              Image.network(
-                  "https://openweathermap.org/img/wn/${weatherData['iconCode']}@4x.png"),
+              Container(
+                height: 128,
+                width: 128,
+                child: WeatherIconHandler.getImage(
+                      iconCode: weatherData['iconCode'],
+                    ) ?? Image.network(
+                    "https://openweathermap.org/img/wn/${weatherData['iconCode']}@4x.png"),
+              ),
               Text("Maximum: ${weatherData['tempMax']}°C"),
               Text("Minimum: ${weatherData['tempMin']}°C"),
               Text("Description: ${weatherData['description']}"),
-
               // Add more weather details here
             ],
           ),
@@ -57,7 +64,6 @@ class _ForecastViewState extends ConsumerState<ForecastView> {
     final quarterlyForecast = ref.watch(quarterlyWeatherDataProvider);
     return Scaffold(
       body: quarterlyForecast.when(data: (data) {
-        logger.i(data);
         return Column(
           children: [
             const Gap(8),
@@ -75,7 +81,6 @@ class _ForecastViewState extends ConsumerState<ForecastView> {
                   itemCount: 5,
                   itemBuilder: (context, index) {
                     final filterIndex = index * 8;
-
                     DateTime date =
                         DateTime.parse(data.list[filterIndex].dtTxt);
                     String formattedDate =
@@ -120,9 +125,16 @@ class _ForecastViewState extends ConsumerState<ForecastView> {
                                 ),
                                 Row(
                                   children: [
-                                    // Replace this with a svg definer based on what data is supplied by the api
-                                    Image.network(
-                                        "https://openweathermap.org/img/wn/${data.list[filterIndex].weather[0].icon}@2x.png"),
+                                    Container(
+                                      height: 128,
+                                      width: 128,
+                                      child: WeatherIconHandler.getImage(
+                                            iconCode: data.list[filterIndex]
+                                                .weather[0].icon,
+                                          ) ??
+                                          Image.network(
+                                              "https://openweathermap.org/img/wn/${data.list[filterIndex].weather[0].icon}@2x.png"),
+                                    ),
                                     const Gap(10),
                                     Column(
                                       crossAxisAlignment:
@@ -147,7 +159,6 @@ class _ForecastViewState extends ConsumerState<ForecastView> {
           ],
         );
       }, error: (error, stackTrace) {
-        logger.e(error, error: error, stackTrace: stackTrace);
         return Center(
           child: Text(
             'Error : $error',

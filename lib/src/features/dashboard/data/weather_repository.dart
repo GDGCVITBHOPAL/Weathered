@@ -3,12 +3,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:logger/logger.dart';
 
 import '../model/current_model.dart';
 import '../model/forecast_model.dart';
 
-var logger = Logger();
 
 class WeatherDataRepository {
   //TODO : Remove API Key
@@ -22,7 +20,6 @@ class WeatherDataRepository {
         "https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&units=metric&appid=$apiKey";
 
     return http.get(Uri.parse(url)).then((http.Response response) {
-      logger.i(response.body);
       if (response.statusCode == 200) {
         // If the response is successful, parse the data and return a CurrentWeatherModel object
         return CurrentWeatherModel.fromJson(json.decode(response.body));
@@ -38,7 +35,6 @@ class WeatherDataRepository {
     String url =
         "http://api.openweathermap.org/data/2.5/forecast?lat=${coords.latitude}&lon=${coords.longitude}&units=metric&appid=$apiKey";
     return http.get(Uri.parse(url)).then((http.Response response) {
-      logger.i(response);
       if (response.statusCode == 200) {
         // If the response is successful, parse the data and return a CurrentWeatherModel object
         return ForecastModel.fromJson(json.decode(response.body));
