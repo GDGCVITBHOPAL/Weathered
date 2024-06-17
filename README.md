@@ -38,7 +38,7 @@ Weather icons taken from [Here](https://www.figma.com/community/file/11267774519
 ## Steps to run the App :
 Excited to experience WEATHERED? Here's how to set it up:
 
-1. **Fork the Repository:** Contribute to the project or simply get a copy for your personal use.
+1. **Fork the Repository:** Fork this repository to your account to get a copy for your personal use.
 2. **Clone Locally:** Retrieve the project onto your development machine using Git.
 3. **Install Flutter:** Ensure you have Flutter and its dependencies installed.
 4. **Install Dependencies:** Execute `flutter pub get` to download all required packages.
