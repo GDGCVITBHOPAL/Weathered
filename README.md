@@ -34,6 +34,7 @@
 
 ## Credits :
 Weather icons taken from [Here](https://www.figma.com/community/file/1126777451931792118/weather-glassmorphism-icon)
+API Services are provided by [OpenWeather](https://openweathermap.org/)
 
 ## Steps to run the App :
 Excited to experience WEATHERED? Here's how to set it up:
@@ -42,6 +43,6 @@ Excited to experience WEATHERED? Here's how to set it up:
 2. **Clone Locally:** Retrieve the project onto your development machine using Git.
 3. **Install Flutter:** Ensure you have Flutter and its dependencies installed.
 4. **Install Dependencies:** Execute `flutter pub get` to download all required packages.
-5. **Obtain an API Key:** Create a free API key from OpenWeatherMap ([https://openweathermap.org/api](https://openweathermap.org/api)).
-6. **Configure API Key:** Establish a file named `api_key.dart` within the `lib/src/api` folder, and securely store your OpenWeatherMap API key within this file.
+5. **Obtain an API Key:** Create a free API key from OpenWeather ([https://openweathermap.org/api](https://openweathermap.org/api)).
+6. **Configure API Key:** Establish a file named `api_key.dart` within the `lib/src/api` folder, and securely store your OpenWeather API key within this file.
 7. **Run the App:** Launch or debug the application using your preferred Flutter environment.
