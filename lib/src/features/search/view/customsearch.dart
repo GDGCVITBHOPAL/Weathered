@@ -98,7 +98,18 @@ class _SearchCityState extends ConsumerState<SearchCity> {
                     return weatherAsyncValue.when(
                       data: (weather) {
                         return Container(
-                          color: Theme.of(context).colorScheme.primaryContainer,
+                          padding: const EdgeInsets.all(16),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.1),
+                                blurRadius: 10,
+                                spreadRadius: 5,
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(16),
+                            color: Theme.of(context).colorScheme.primaryContainer,
+                          ),
                           child: Column(
                             children: [
                               Text(
