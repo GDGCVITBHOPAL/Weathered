@@ -1,6 +1,10 @@
 # WEATHERED
-A weather forecast application built on flutter with Riverpod for state management.
+A weather forecast application built on <br>
+flutter with Riverpod for state management.
 
+<p align="right">  
+  <img  width="250px" src="https://github.com/DSCVITBHOPAL/Weathered/assets/71162979/de5e04b0-7956-4329-be40-f1ee62ee9a00">
+</p>
 
 ## Features :
 1. Material You based Theme
@@ -16,16 +20,8 @@ A weather forecast application built on flutter with Riverpod for state manageme
 
 
 ## Screenshots :
-<img alt="Home(Blue)" width="24%" src="assets/images/weathered_home_blue.jpg">
-<img alt="Home(Green)" width="24%" src="assets/images/weathered_home_green.jpg">
-<img alt="Home(Red)" width="24%" src="assets/images/weathered_home_red.jpg">
-<img alt="Home(Violet)" width="24%" src="assets/images/weathered_home_violet.jpg">
-<img alt="Home(DarkTheme)" width="24%" src="assets/images/weathered_home_darktheme_red.jpg">
-<img alt="Daily Forecast" width="24%" src="assets/images/weathered_daily_forecast.jpg">
-<img alt="Weather Forecast Popup" width="24%" src="assets/images/weathered_weather_forecast_popup.jpg">
-<img alt="Map" width="24%" src="assets/images/weathered_map.jpg">
-<img alt="Search" width="24%" src="assets/images/weathered_search.jpg">
-<img alt="Settings" width="24%" src="assets/images/weathered_settings.jpg">
+<img alt="Home(Blue)" width="24%" src="assets/images/weathered_home_blue.jpg"> <img alt="Home(Green)" width="24%" src="assets/images/weathered_home_green.jpg"> <img alt="Home(Red)" width="24%" src="assets/images/weathered_home_red.jpg">
+<img alt="Home(Violet)" width="24%" src="assets/images/weathered_home_violet.jpg"> <img alt="Home(DarkTheme)" width="24%" src="assets/images/weathered_home_darktheme_red.jpg"> <img alt="Daily Forecast" width="24%" src="assets/images/weathered_daily_forecast.jpg"> <img alt="Weather Forecast Popup" width="24%" src="assets/images/weathered_weather_forecast_popup.jpg"> <img alt="Map" width="24%" src="assets/images/weathered_map.jpg"> <img alt="Search" width="24%" src="assets/images/weathered_search.jpg"> <img alt="Settings" width="24%" src="assets/images/weathered_settings.jpg">
 
 ## Maintainers :
 1. [xkaper001](https://github.com/xkaper001)
