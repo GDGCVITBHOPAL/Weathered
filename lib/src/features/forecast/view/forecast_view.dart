@@ -166,9 +166,9 @@ class _ForecastViewState extends ConsumerState<ForecastView> {
                                 ),
                                 Row(
                                   children: [
-                                    Container(
+                                    SizedBox(
                                       height: 128,
-                                      width: 128,
+                                      width: 100,
                                       child: WeatherIconHandler.getImage(
                                             iconCode: data.list[filterIndex]
                                                 .weather[0].icon,

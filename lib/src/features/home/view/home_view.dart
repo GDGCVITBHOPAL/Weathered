@@ -52,7 +52,6 @@ class _HomeViewState extends State<HomeView> {
 
   Future<void> checkLocationConnection() async {
     bool isServiceEnabled = await Geolocator.isLocationServiceEnabled();
-    logger1.i(isServiceEnabled);
     if (!isServiceEnabled) {
       // Location services are not enabled, show error message
       setState(() {

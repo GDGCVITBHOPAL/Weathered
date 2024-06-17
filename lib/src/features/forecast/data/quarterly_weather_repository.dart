@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:weathered/src/api/api_key.dart';
 import 'package:weathered/src/features/forecast/model/quarterly_model_generated.dart';
 
-import '../model/quarterly_model_generated.dart';
 
 class QuarterlyWeatherDataRepository {
   final LatLng coords;

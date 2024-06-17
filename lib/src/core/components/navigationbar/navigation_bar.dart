@@ -28,7 +28,7 @@ Widget navBar() {
           ),
         ],
         selectedIndex: currentIndex,
-        indicatorColor: Colors.white,
+        indicatorColor: Theme.of(context).colorScheme.primaryContainer,
         onDestinationSelected: (value) {
           // Update the selected index
           ref
