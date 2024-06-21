@@ -1,9 +1,11 @@
 # WEATHERED
-### A Comprehensive Weather Forecast App Built with Flutter and Riverpod
+### A Comprehensive Weather Forecast App Built with Flutter + Riverpod & Powered by OpenWeather
 
 <p align="center">  
   <img  width="250px" src="https://github.com/DSCVITBHOPAL/Weathered/assets/71162979/de5e04b0-7956-4329-be40-f1ee62ee9a00">
 </p>
+
+
 
 ## Key Features:
 - Beautiful, dynamic Material You design adapts to your theme style of device.
